@@ -1,0 +1,16 @@
+
+:root {
+  --ids__text-RGB:         44, 44, 44;
+
+  --ids__link-RGB:         44, 44, 44;
+  --ids__hover-RGB:        90, 100, 255;
+  --ids__accent-RGB:       57, 53, 216;
+  --ids__mark-RGB:         255, 200, 29;
+  --ids__surface-RGB:      245, 245, 245;
+  --ids__background-RGB:   255, 255, 255;
+}
+
+body {
+  color: rgba(var(--ids__text-RGB), 1);
+  background-color: rgba(var(--ids__background-RGB), 1);
+}
