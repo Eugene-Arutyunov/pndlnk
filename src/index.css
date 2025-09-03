@@ -1,25 +1,5 @@
-.header {
-  padding: 1em;
-  font-family: "CoFoSansSemi-Mono";
-
-  & .nav {
-    display: flex;
-    gap: 0.5em;
-
-    & a {
-      text-decoration: none;
-    }
-
-    & span {
-      text-decoration: underline;
-      text-decoration-thickness: 0.5em;
-      text-decoration-color: rgba(var(--ids__mark-RGB), 1);
-    }
-  }
-}
-
 .ids {
   ul {
-    font-family: "CoFoHand";
+    /* font-family: "CoFoHand"; */
   }
 }
