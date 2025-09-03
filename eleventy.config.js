@@ -14,5 +14,6 @@ module.exports = function (conf) {
       includes: "./includes",
     },
     htmlTemplateEngine: "njk",
+    pathPrefix: "/pndlnk/",
   };
 };
