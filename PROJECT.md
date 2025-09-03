@@ -8,6 +8,36 @@
 - `_site/` — сгенерированные файлы (не коммитится)
 - `eleventy.config.js` — конфигурация Eleventy
 
+## Шрифты
+
+В проекте используются кастомные шрифты:
+- **Robert** — основной шрифт для body текста
+- **CoFoSansSemi-Mono** — заголовки и навигация
+- **CoFoGothic** — дополнительный шрифт
+- **CoFoHand** — для списков
+
+### Оптимизация загрузки
+
+Шрифты подключаются двумя способами для ускорения загрузки:
+
+1. **Предзагрузка в HTML** (в `src/includes/layout.html`):
+```html
+<link rel="preload" href="/fonts/Robert/CoFoRobert-Book-Trial.otf" as="font" type="font/otf" crossorigin />
+<link rel="preload" href="/fonts/CoFoSansSemi-Mono-VF-Trial.ttf" as="font" type="font/ttf" crossorigin />
+```
+
+2. **Объявление в CSS** (в `src/ids/settings.css`):
+```css
+@font-face {
+  font-family: "Robert";
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/Robert/CoFoRobert-Book-Trial.otf") format("opentype");
+}
+```
+
+Предзагрузка в HTML позволяет браузеру начать загрузку шрифтов параллельно с CSS, что устраняет мигание системного шрифта при переходах между страницами.
+
 ## PathPrefix
 
 Проект развернут на поддомене `https://pndlnk.dev.intuition.team/`, поэтому PathPrefix не используется. Фильтр `| url` остается в шаблонах для совместимости, но не добавляет префикс.
