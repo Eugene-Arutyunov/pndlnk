@@ -1,15 +1,13 @@
-{% set nav = [ { title: 'Понедельник', href: '/' }, { title: 'ДКЦП', href:
-'/dkcp/' }, { title: 'База', href: '/dkcp-base/' }, { title: 'Чекап', href:
-'/dkcp-checkup/' }, { title: 'Логика', href: '/cxstrategy/' }, { title: 'КСЦ',
-href: '/ksc/' }, { title: 'Проекты', href: '/projects/' }, { title: 'Мы', href:
-'/about/' }, { title: 'Блог↗', href: '/https://blog.buro.cx//' } ] %}
+{% set nav = [ { title: 'Понедельник', href: '/' }, { title: 'ДКЦП', href: '/dkcp/' }, { title: 'База', href: '/dkcp-base/' }, { title: 'Чекап', href: '/dkcp-checkup/' }, { title:
+'Логика', href: '/cxstrategy/' }, { title: 'КСЦ', href: '/ksc/' }, { title: 'Проекты', href: '/projects/' }, { title: 'Мы', href: '/about/' } ] %}
 
 <header class="header">
-    <nav class="nav">
-        {% for link in nav %} {% if link.href == page.url %}
-        <span>{{ link.title }}</span>
-        {% else %}
-        <a href="{{ link.href | url }}">{{ link.title }}</a>
-        {% endif %} {% endfor %}
-    </nav>
+  <nav class="nav">
+    {% for link in nav %} {% if link.href == page.url %}
+    <span>{{ link.title }}</span>
+    {% else %}
+    <a href="{{ link.href | url }}">{{ link.title }}</a>
+    {% endif %} {% endfor %}
+    <a href="https://blog.buro.cx/">Блог↗</a>
+  </nav>
 </header>
