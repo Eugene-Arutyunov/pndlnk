@@ -14,6 +14,5 @@ module.exports = function (conf) {
       includes: "./includes",
     },
     htmlTemplateEngine: "njk",
-    pathPrefix: process.env.PATH_PREFIX || "",
   };
 };
