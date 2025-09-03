@@ -1,7 +1,8 @@
 {
   "scripts": {
     "prebuild": "rm -rf _site",
-    "build": "eleventy",
+    "build": "PATH_PREFIX=/pndlnk/ eleventy",
+    "build:clean": "eleventy",
     "dev": "eleventy --serve"
   },
   "dependencies": {

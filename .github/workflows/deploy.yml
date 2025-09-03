@@ -23,15 +23,17 @@ jobs:
           node-version: "20" # нужная вам версия
 
       - name: Install dependencies
-        run: npm i # или npm install / pnpm install / yarn install
+        run: npm i
 
       - name: Build
-        run: npm run build # или другая ваша команда
+        run: npm run build
+        env:
+          PATH_PREFIX: /pndlnk/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site # или ./build — ваша папка со статикой
+          path: ./_site
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4

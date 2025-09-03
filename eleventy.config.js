@@ -14,6 +14,6 @@ module.exports = function (conf) {
       includes: "./includes",
     },
     htmlTemplateEngine: "njk",
-    pathPrefix: "/pndlnk/",
+    pathPrefix: process.env.PATH_PREFIX || "",
   };
 };
