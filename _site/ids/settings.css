@@ -9,28 +9,28 @@
   font-family: "CoFoGothic";
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/CoFoGothic-VF-Trial.ttf") format("truetype");
+  src: url("fonts/CoFoGothic-VF-Trial.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "CoFoSansSemi-Mono";
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/CoFoSansSemi-Mono-VF-Trial.ttf") format("truetype");
+  src: url("fonts/CoFoSansSemi-Mono-VF-Trial.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "CoFoHand";
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/CoFoHand-Regular-Trial.otf") format("opentype");
+  src: url("fonts/CoFoHand-Regular-Trial.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Robert";
   font-style: normal;
   font-display: swap;
-  src: url("../fonts/Robert/CoFoRobert-Book-Trial.otf") format("opentype");
+  src: url("fonts/Robert/CoFoRobert-Book-Trial.otf") format("opentype");
 }
 
 body {
