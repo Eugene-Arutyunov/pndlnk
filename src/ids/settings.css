@@ -33,8 +33,18 @@
   src: url("fonts/Robert/CoFoRobert-Book-Trial.otf") format("opentype");
 }
 
+:root {
+  --sans: "CoFoGothic";
+  --serif: "Robert";
+  --mono: "CoFoSansSemi-Mono";
+  --hand: "CoFoHand";
+
+  --smaller: 0.8em;
+}
+
+
 body {
-  font-family: "Robert";
+  font-family: var(--serif);
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
 

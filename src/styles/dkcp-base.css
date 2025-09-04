@@ -1,0 +1,5 @@
+.vp-illustration {
+  margin: 1em 0;
+  padding: 1em;
+  border: 1px solid rgba(var(--ids__text-RGB), 0.2);
+}

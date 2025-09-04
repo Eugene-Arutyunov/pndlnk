@@ -1,0 +1,9 @@
+.article-title {
+  margin-bottom: 5em;
+
+  font-family: var(--sans);
+
+  & .title-caption {
+    font-weight: 300;
+  }
+}

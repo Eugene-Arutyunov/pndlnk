@@ -21,8 +21,12 @@
     margin-bottom: calc(var(--ids__density) * 0.4em);
 
     &.loud {
-      font-size: 1.7em;
+      font-size: 1.5em;
       line-height: 1.2;
+
+      @media (width < 767px) {
+        font-size: 1.35em;
+      }
     }
   }
 
@@ -35,24 +39,25 @@
     margin: 0;
     font-weight: 600;
 
-    font-family: "CoFoSansSemi-Mono";
+    font-family: var(--mono);
     letter-spacing: -0.02em;
   }
 
   & h1 {
-    font-size: 2.4em;
-    font-weight: 700;
+    font-family: var(--sans);
+    font-size: 3.2em;
+    font-weight: 500;
     line-height: calc(var(--ids__density) / 1.3);
-    margin-bottom: 0.4em;
+    margin-bottom: 0.2em;
+    letter-spacing: 0em;
 
-    &.S {
-      font-size: 2.4em;
-      font-weight: 650;
-    }
 
-    &.XS {
-      font-size: 1.5em;
-      font-weight: 600;
+    &.XL {
+      font-size: 6em;
+
+      @media (width < 767px) {
+        font-size: 4em;
+      }
     }
   }
 
@@ -159,7 +164,7 @@
 
   & code {
     font-size: 0.9em;
-    font-family: "Root UI";
+    font-family: var(--mono);
     letter-spacing: 0.02em;
     font-weight: 450;
     padding: 0.1em 0.25em;

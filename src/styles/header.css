@@ -1,19 +1,39 @@
 .header {
-  padding: 1em;
-  font-family: "CoFoSansSemi-Mono";
+  padding: 0.5em 1em;
+  font-family: var(--mono);
+  display: flex;
+  justify-content: space-between;
+
+  @media (width < 767px) {
+    padding: 0.5em calc(var(--ids__density) * 0.4em);
+    flex-wrap: wrap;
+  }
 
   & .nav {
     display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
     gap: 0.5em;
 
-    & a {
-      text-decoration: none;
+    @media (width < 767px) {
+      width: 100%;
+      margin-bottom: 0.5em;
+      font-size: var(--smaller);
+
     }
 
-    & span {
-      text-decoration: underline;
-      text-decoration-thickness: 0.5em;
-      text-decoration-color: rgba(var(--ids__mark-RGB), 1);
+    & .logo {
+      display: block;
+      width: 15em;
+      margin-bottom: -0.17em;
+
+      @media (width < 767px) {
+        width: 100%;
+
+      }
+
+
     }
+
   }
 }
