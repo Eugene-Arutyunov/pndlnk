@@ -1,5 +1,155 @@
 .vp-illustration {
+  position: relative;
   margin: 1em 0;
   padding: 1em;
-  border: 1px solid rgba(var(--ids__text-RGB), 0.2);
+  background-color: rgba(var(--ids__surface-RGB), 0.4);
+  overflow: hidden;
+
+  & .tmp-sample {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -10;
+  }
+}
+
+.vp-diagram {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/1;
+  perspective: 40em;
+  transform-style: preserve-3d;
+}
+
+.vp-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vp-term {
+  position: absolute;
+  text-align: center;
+  font-size: 1em;
+  line-height: 1.2;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-family: var(--sans);
+}
+
+.vp-layer-1 {
+  z-index: 5;
+  transform: translateZ(5em);
+  filter: blur(0.12em);
+  animation: layer1-float 6s ease-in-out infinite;
+}
+
+.vp-layer-2 {
+  z-index: 4;
+  transform: translateZ(2.5em);
+  filter: blur(0.06em);
+  animation: layer2-float 7s ease-in-out infinite;
+}
+
+.vp-layer-3 {
+  z-index: 3;
+  transform: translateZ(0px);
+  animation: layer3-float 10s ease-in-out infinite;
+}
+
+.vp-layer-4 {
+  z-index: 2;
+  transform: translateZ(-2.5em);
+  filter: blur(0.06em);
+  animation: layer4-float 9s ease-in-out infinite;
+}
+
+.vp-layer-5 {
+  z-index: 1;
+  transform: translateZ(-5em);
+  filter: blur(0.12em);
+  animation: layer5-float 8s ease-in-out infinite;
+}
+
+@keyframes layer1-float {
+  0%,
+  100% {
+    transform: translateZ(3em);
+    filter: blur(0.08em);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateZ(7em);
+    filter: blur(0.2em);
+    opacity: 0.8;
+  }
+}
+
+@keyframes layer2-float {
+  0%,
+  100% {
+    transform: translateZ(1em);
+    filter: blur(0.03em);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateZ(4em);
+    filter: blur(0.1em);
+    opacity: 0.9;
+  }
+}
+
+@keyframes layer3-float {
+  0%,
+  100% {
+    transform: translateZ(-1em);
+  }
+
+  50% {
+    transform: translateZ(1em);
+  }
+}
+
+@keyframes layer4-float {
+  0%,
+  100% {
+    transform: translateZ(-1em);
+    filter: blur(0.03em);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateZ(-4em);
+    filter: blur(0.1em);
+    opacity: 0.9;
+  }
+}
+
+@keyframes layer5-float {
+  0%,
+  100% {
+    transform: translateZ(-3em);
+    filter: blur(0.08em);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateZ(-7em);
+    filter: blur(0.2em);
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .vp-diagram {
+    aspect-ratio: 3/2;
+  }
+
+  .vp-term {
+    font-size: 0.8em;
+  }
 }
