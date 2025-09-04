@@ -2,7 +2,8 @@
   position: relative;
   margin: 1em 0;
   padding: 1em;
-  background-color: rgba(var(--ids__surface-RGB), 0.4);
+  background-color: rgba(var(--ids__surface-RGB), 0.2);
+  /* border: 1px solid rgba(var(--ids__text-RGB), 0.2); */
   overflow: hidden;
 
   & .tmp-sample {
@@ -10,6 +11,44 @@
     top: 0;
     width: 100%;
     z-index: -10;
+  }
+
+  &.vp-initial {
+    .center-term {
+      animation: center-term-float 8s ease-in-out infinite;
+    }
+  }
+
+  &.vp-focus {
+    .vp-diagram {
+      animation: none;
+    }
+
+    .vp-layer {
+      animation: none;
+    }
+
+    .vp-term {
+      opacity: 0.4;
+    }
+
+    .center-term {
+      opacity: 1;
+      display: inline-block;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -0.3em;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transform: rotate(-1deg);
+        transform-origin: left center;
+      }
+    }
   }
 }
 
@@ -19,6 +58,7 @@
   aspect-ratio: 3/1;
   perspective: 40em;
   transform-style: preserve-3d;
+  animation: scene-rotate 12s ease-in-out infinite;
 }
 
 .vp-layer {
@@ -74,6 +114,7 @@
 }
 
 @keyframes layer1-float {
+
   0%,
   100% {
     transform: translateZ(3em);
@@ -89,6 +130,7 @@
 }
 
 @keyframes layer2-float {
+
   0%,
   100% {
     transform: translateZ(1em);
@@ -104,6 +146,7 @@
 }
 
 @keyframes layer3-float {
+
   0%,
   100% {
     transform: translateZ(-1em);
@@ -114,7 +157,36 @@
   }
 }
 
+@keyframes scene-rotate {
+
+  0%,
+  100% {
+    transform: rotateY(-10deg);
+  }
+
+  50% {
+    transform: rotateY(10deg);
+  }
+}
+
+@keyframes center-term-float {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateZ(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateZ(4em);
+    filter: blur(0.08em);
+    opacity: 0.9;
+  }
+}
+
 @keyframes layer4-float {
+
   0%,
   100% {
     transform: translateZ(-1em);
@@ -130,6 +202,7 @@
 }
 
 @keyframes layer5-float {
+
   0%,
   100% {
     transform: translateZ(-3em);
