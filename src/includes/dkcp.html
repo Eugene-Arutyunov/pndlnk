@@ -1,0 +1,230 @@
+{#
+Компонент ДКЦП (Дворец культуры ценностного предложения)
+
+Принимаемые параметры:
+- value: содержимое крыши (Ценность)
+- segment: Клиентский сегмент
+- conflict: Ключевой мотивационный конфликт
+- artifact: Артефакт
+- artifactAttrs: Атрибуты артефакта
+- exchangeConditions: Условия обмена
+- priceConditions: Ценовые условия
+- companyAttrs: Атрибуты компании
+- arguments: Аргументы
+
+Пример использования:
+{% set value = 'Экологичность' %}
+{% set segment = 'Молодые родители' %}
+{% include 'dkcp.html' %}
+#}
+
+<div class="dkcp">
+  <div class="dkcp__roof">
+    <div class="dkcp__roof-content">
+      {{ value if value else "Ценность" }}
+    </div>
+  </div>
+
+  <div class="dkcp__building">
+    <div class="dkcp__row dkcp__row--top">
+      <div class="dkcp__block dkcp__block--segment">
+        <div class="dkcp__block-title">Клиентский сегмент</div>
+        <div class="dkcp__block-content">{{ segment if segment else "" }}</div>
+      </div>
+
+      <div class="dkcp__block dkcp__block--conflict">
+        <div class="dkcp__block-title">Ключевой мотивационный конфликт</div>
+        <div class="dkcp__block-content">{{ conflict if conflict else "" }}</div>
+      </div>
+
+      <div class="dkcp__block dkcp__block--artifact">
+        <div class="dkcp__block-title">Артефакт</div>
+        <div class="dkcp__block-content">{{ artifact if artifact else "" }}</div>
+      </div>
+
+      <div class="dkcp__block dkcp__block--artifact-attrs">
+        <div class="dkcp__block-title">Атрибуты артефакта</div>
+        <div class="dkcp__block-content">{{ artifactAttrs if artifactAttrs else "" }}</div>
+      </div>
+
+      <div class="dkcp__block dkcp__block--arguments">
+        <div class="dkcp__block-title">Аргументы</div>
+        <div class="dkcp__block-content">{{ arguments if arguments else "" }}</div>
+      </div>
+    </div>
+
+    <div class="dkcp__row dkcp__row--middle">
+      <div class="dkcp__block dkcp__block--exchange">
+        <div class="dkcp__block-title">Условия обмена</div>
+        <div class="dkcp__block-content">{{ exchangeConditions if exchangeConditions else "" }}</div>
+      </div>
+
+      <div class="dkcp__block dkcp__block--price">
+        <div class="dkcp__block-title">Ценовые условия</div>
+        <div class="dkcp__block-content">{{ priceConditions if priceConditions else "" }}</div>
+      </div>
+    </div>
+
+    <div class="dkcp__row dkcp__row--bottom">
+      <div class="dkcp__block dkcp__block--company">
+        <div class="dkcp__block-title">Атрибуты компании</div>
+        <div class="dkcp__block-content">{{ companyAttrs if companyAttrs else "" }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.dkcp {
+  --gap: 0.125em;
+  width: 100%;
+  font-family: inherit;
+  margin: 4em 0 2em;
+}
+
+.dkcp__roof {
+  position: relative;
+  height: 1.625em;
+  background: #e6e1e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: calc(var(--gap) * 2);
+}
+
+.dkcp__roof::before {
+  content: '';
+  position: absolute;
+  top: -0.8125em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 25em solid transparent;
+  border-right: 25em solid transparent;
+  border-bottom: 0.8125em solid #e6e1e2;
+}
+
+.dkcp__roof-content {
+  font-weight: bold;
+  font-size: 1.125em;
+  color: #333;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.dkcp__building {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.dkcp__row {
+  display: flex;
+  gap: var(--gap);
+  margin: 0 auto;
+}
+
+.dkcp__row--top {
+  width: 100%;
+  padding: 0 calc(var(--gap) * 2);
+}
+
+.dkcp__row--top .dkcp__block {
+  width: calc((100% - 4 * var(--gap)) / 5);
+  min-height: 7.5em;
+}
+
+.dkcp__row--middle {
+  width: 100%;
+  padding: 0 calc(var(--gap) * 2);
+}
+
+.dkcp__row--middle .dkcp__block {
+  width: calc((100% - 1 * var(--gap)) / 2);
+  min-height: 2.75em;
+}
+
+.dkcp__row--bottom {
+  width: 100%;
+  margin-top: calc(var(--gap) * 2);
+}
+
+.dkcp__row--bottom .dkcp__block {
+  flex: 1;
+  min-height: 2.75em;
+}
+
+.dkcp__block {
+  padding: 0.75em;
+  background: #e6e1e2;
+  display: flex;
+  flex-direction: column;
+}
+
+.dkcp__block-title {
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #666;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+.dkcp__block-content {
+  font-size: 0.875em;
+  color: #333;
+  line-height: 1.3;
+  flex: 1;
+}
+
+@media (max-width: 48em) {
+  .dkcp__roof::before {
+    border-left-width: 50vw;
+    border-right-width: 50vw;
+  }
+
+  .dkcp__roof-content {
+    font-size: 1em;
+  }
+
+  .dkcp__row--top {
+    flex-wrap: wrap;
+  }
+
+  .dkcp__row--top .dkcp__block {
+    flex: 1 1 calc(50% - 0.0625em);
+    min-width: calc(50% - 0.0625em);
+  }
+
+  .dkcp__block-title {
+    font-size: 0.6875em;
+  }
+
+  .dkcp__block-content {
+    font-size: 0.8125em;
+  }
+}
+
+@media (max-width: 30em) {
+  .dkcp__row--top {
+    flex-direction: column;
+  }
+
+  .dkcp__row--top .dkcp__block {
+    flex: 1 1 auto;
+    min-width: auto;
+  }
+
+  .dkcp__row--middle {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .dkcp__building,
+  .dkcp__row--bottom {
+    max-width: 100%;
+  }
+}
+</style>

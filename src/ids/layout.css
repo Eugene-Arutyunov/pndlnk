@@ -33,7 +33,6 @@
     width: 80%;
     margin: 0 auto;
 
-
     @media (width < 767px) {
       padding: 0 calc(var(--ids__density) * 0.6em);
     }
@@ -56,8 +55,6 @@
       padding: 0;
     }
   }
-
-
 
   & .ids__text-width {
     width: 80%;
@@ -125,6 +122,14 @@
 
       @media (width < 767px) {
         --columns: 3;
+      }
+    }
+  }
+
+  &.mobile-XL {
+    .ids__sequence-item {
+      @media (width < 767px) {
+        --columns: 1;
       }
     }
   }
