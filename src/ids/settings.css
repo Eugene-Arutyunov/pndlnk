@@ -4,7 +4,6 @@
 
 /* Fonts */
 
-
 @font-face {
   font-family: "CoFoGothic";
   font-style: normal;
@@ -33,21 +32,74 @@
   src: url("fonts/Robert/CoFoRobert-Book-Trial.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Newton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("fonts/Newton/Newton_Book.woff2") format("woff2"),
+    url("fonts/Newton/Newton_Book.woff") format("woff"),
+    url("fonts/Newton/Newton_Book.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Newton";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("fonts/Newton/Newton_Italic.woff2") format("woff2"),
+    url("fonts/Newton/Newton_Italic.woff") format("woff"),
+    url("fonts/Newton/Newton_Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Newton";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("fonts/Newton/Newton_Bold.woff2") format("woff2"),
+    url("fonts/Newton/Newton_Bold.woff") format("woff"),
+    url("fonts/Newton/Newton_Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Newton";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("fonts/Newton/Newton_Bold Italic.woff2") format("woff2"),
+    url("fonts/Newton/Newton_Bold Italic.woff") format("woff"),
+    url("fonts/Newton/Newton_Bold Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Newton";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src:
+    url("fonts/Newton/Newton_Extra Bold.woff2") format("woff2"),
+    url("fonts/Newton/Newton_Extra Bold.woff") format("woff"),
+    url("fonts/Newton/Newton_Extra Bold.ttf") format("truetype");
+}
+
 :root {
-  --sans: "CoFoGothic";
-  --serif: "Robert";
+  --gothic: "CoFoGothic";
+  --serif: "Newton";
   --mono: "CoFoSansSemi-Mono";
   --hand: "CoFoHand";
 
   --smaller: 0.8em;
 }
 
-
 body {
   font-family: var(--serif);
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
-
 }
 
 /* Density */
@@ -60,7 +112,6 @@ body {
   font-size: 1em;
   line-height: var(--ids__density);
 }
-
 
 html {
   /* Font-size calculation using variables */
@@ -88,8 +139,6 @@ html {
   @media screen and (min-width: 1500px) {
     font-size: calc(var(--desktop-font-size-max) * 1px);
   }
-
-
 }
 
 /* Smooth scroll for anchored links */

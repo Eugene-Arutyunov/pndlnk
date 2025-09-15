@@ -1,9 +1,19 @@
 .article-title {
   margin-bottom: 1em;
 
-  font-family: var(--sans);
+}
 
-  & .title-caption {
-    font-weight: 300;
-  }
+.gothic {
+  font-family: var(--gothic);
+  font-weight: 350;
+  font-size: 1.08em;
+  line-height: 1.21;
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.section {
+  margin: 3em 0;
 }
