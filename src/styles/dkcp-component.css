@@ -1,0 +1,103 @@
+.dkcp-component {
+  --gap: 0.3em;
+  width: 100%;
+  margin: 8em 0 4em;
+
+  & .dkcp-top {
+    position: relative;
+    height: 1.625em;
+    background-color: rgba(var(--ids__surface-RGB), 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: calc(var(--gap) * 2);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -5em;
+      left: 0;
+
+      width: 100%;
+      height: 5.01em;
+      background-color: rgba(var(--ids__surface-RGB), 1);
+
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+      z-index: -1;
+    }
+
+    & .dkcp-block {
+      width: 100%;
+      margin-top: -6em;
+      background-color: transparent;
+      text-align: center;
+    }
+  }
+
+  & .dkcp-facade {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    margin-bottom: calc(var(--gap) * 2);
+
+    & .dkcp-row {
+      width: 100%;
+      display: flex;
+      gap: var(--gap);
+      margin: 0 auto;
+      padding: 0 calc(var(--gap) * 2);
+
+      &.columns {
+        & .dkcp-block {
+          width: calc((100% - 4 * var(--gap)) / 5);
+          min-height: 16em;
+
+        }
+      }
+
+      &.bottom-row {
+        & .dkcp-block {
+          width: calc((100% - 1 * var(--gap)) / 2);
+          min-height: 3em;
+        }
+      }
+    }
+  }
+
+  & .dkcp-bottom {
+    width: 100%;
+    min-height: 3em;
+  }
+}
+
+
+
+.dkcp-block {
+  padding: 0.3em;
+  background-color: rgba(var(--ids__surface-RGB), 1);
+
+  & .dkcp-digit {
+    font-size: 0.6em;
+    font-family: var(--gothic);
+    opacity: 0.5;
+  }
+
+  & .dkcp-title {
+    font-size: 1.2em;
+    font-family: var(--mono);
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.3em;
+  }
+
+  & .dkcp-definition {
+    font-family: var(--gothic);
+
+  }
+
+  & .dkcp-hint {
+    font-family: var(--hand);
+  }
+
+}

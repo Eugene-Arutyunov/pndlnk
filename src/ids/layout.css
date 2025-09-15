@@ -22,6 +22,7 @@
   position: relative;
   width: 68%;
   margin: 0 auto 0 8%;
+  max-width: 1020px;
 
   @media (width < 767px) {
     width: 100%;
@@ -30,8 +31,9 @@
   }
 
   &.L {
-    width: 80%;
-    margin: 0 auto;
+    width: 84%;
+    margin: 0 8%;
+    max-width: 1260px;
 
     @media (width < 767px) {
       padding: 0 calc(var(--ids__density) * 0.6em);
@@ -58,6 +60,7 @@
 
   & .ids__text-width {
     width: 80%;
+    max-width: 816px;
 
     @media (width < 767px) {
       width: 100%;
