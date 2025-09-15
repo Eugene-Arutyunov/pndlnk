@@ -73,7 +73,6 @@
           @media (width < 767px) {
             min-height: 8em;
           }
-
         }
       }
 
@@ -95,8 +94,6 @@
     min-height: 3em;
   }
 }
-
-
 
 .dkcp-block {
   padding: 0.3em;
@@ -122,7 +119,7 @@
     letter-spacing: -0.01em;
     font-weight: 600;
     line-height: 1;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.5em;
 
     @media (width < 767px) {
       font-size: 0.5em;
@@ -131,19 +128,130 @@
   }
 
   & .dkcp-definition {
-
     font-family: var(--gothic);
     font-size: 0.8em;
     line-height: 1.1;
+
 
     @media (width < 767px) {
       font-size: 0.5em;
     }
 
+    & p {
+      margin-bottom: 0.3em;
+    }
   }
 
   & .dkcp-hint {
     font-family: var(--hand);
   }
-
 }
+
+
+
+/* Драфт-режим */
+.dkcp-component--draft {
+
+  & .dkcp-top {
+    background-color: transparent;
+    border-left: 2px solid rgba(var(--ids__text-RGB), 1);
+    filter: drop-shadow(0px -2px 0px rgba(var(--ids__text-RGB), 1));
+    height: 1em;
+
+    @media (width < 767px) {
+      border-left: 1px solid rgba(var(--ids__text-RGB), 1);
+      filter: drop-shadow(0px -1px 0px rgba(var(--ids__text-RGB), 1));
+    }
+
+    &:before {
+      background-color: rgba(var(--ids__background-RGB), 1);
+      clip-path: polygon(0 100%, 0 95%, 50% 0, 100% 95%, 100% 100%);
+      border-bottom: none;
+      top: -3.33em;
+      height: 3.5em;
+    }
+
+    & .dkcp-block {
+      border: none;
+      margin-top: -3.3em;
+    }
+  }
+
+  & .dkcp-facade {
+
+    & .dkcp-row {
+
+      &.columns {
+        & .dkcp-block {
+          min-height: 10em;
+
+          @media (width < 767px) {
+            min-height: 8em;
+          }
+        }
+      }
+
+      &.bottom-row {
+        & .dkcp-block {
+          min-height: 2em;
+
+          @media (width < 767px) {
+            min-height: 1.5em;
+          }
+        }
+      }
+    }
+  }
+
+  & .dkcp-bottom {
+    min-height: 2em;
+  }
+
+
+  & .dkcp-block {
+    background-color: transparent;
+    border: 2px solid rgba(var(--ids__text-RGB), 1);
+    border-right: none;
+    border-bottom: none;
+
+    @media (width < 767px) {
+      border: 1px solid rgba(var(--ids__text-RGB), 1);
+      border-right: none;
+      border-bottom: none;
+    }
+
+    & .dkcp-digit {
+      font-size: 0.6em;
+      font-family: var(--mono);
+      opacity: 1;
+
+      @media (width < 767px) {
+        font-size: 0.45em;
+      }
+    }
+
+    & .dkcp-title {
+      font-size: 0.8em;
+      font-family: var(--mono);
+      letter-spacing: 0em;
+      font-weight: 500;
+      /*line-height: 1;*/
+      /*margin-bottom: 0.3em;*/
+
+      @media (width < 767px) {
+        font-size: 0.5em;
+        font-weight: 500;
+      }
+    }
+
+    & .dkcp-definition {
+      font-family: var(--hand);
+      /*font-size: 0.8em;*/
+      /*line-height: 1.1;*/
+
+      @media (width < 767px) {
+        /*font-size: 0.5em;*/
+      }
+    }
+
+  }
