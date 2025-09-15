@@ -1,5 +1,11 @@
 .article-title {
-  margin-bottom: 1em;
+
+  --padding: 2em;
+  margin: 0 calc(var(--padding) * -1) 1em;
+  padding: var(--padding);
+  min-height: 25em;
+
+
 
 }
 
