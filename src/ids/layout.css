@@ -36,7 +36,9 @@
     max-width: 1260px;
 
     @media (width < 767px) {
-      padding: 0 calc(var(--ids__density) * 0.6em);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 calc(var(--ids__density) * 0.4em);
     }
   }
 

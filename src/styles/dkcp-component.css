@@ -3,6 +3,11 @@
   width: 100%;
   margin: 8em 0 4em;
 
+  @media (width < 767px) {
+    margin: 4em 0 2em;
+    --gap: 0.15em;
+  }
+
   & .dkcp-top {
     position: relative;
     height: 1.625em;
@@ -11,6 +16,10 @@
     align-items: center;
     justify-content: center;
     margin-bottom: calc(var(--gap) * 2);
+
+    @media (width < 767px) {
+      height: 1.25em;
+    }
 
     &:before {
       content: "";
@@ -24,6 +33,11 @@
 
       clip-path: polygon(0 100%, 50% 0, 100% 100%);
       z-index: -1;
+
+      @media (width < 767px) {
+        top: -2.5em;
+        height: 2.51em;
+      }
     }
 
     & .dkcp-block {
@@ -31,6 +45,10 @@
       margin-top: -6em;
       background-color: transparent;
       text-align: center;
+
+      @media (width < 767px) {
+        margin-top: -2.5em;
+      }
     }
   }
 
@@ -52,6 +70,10 @@
           width: calc((100% - 4 * var(--gap)) / 5);
           min-height: 16em;
 
+          @media (width < 767px) {
+            min-height: 8em;
+          }
+
         }
       }
 
@@ -59,6 +81,10 @@
         & .dkcp-block {
           width: calc((100% - 1 * var(--gap)) / 2);
           min-height: 3em;
+
+          @media (width < 767px) {
+            min-height: 2em;
+          }
         }
       }
     }
@@ -76,10 +102,18 @@
   padding: 0.3em;
   background-color: rgba(var(--ids__surface-RGB), 1);
 
+  @media (width < 767px) {
+    padding: 0.15em;
+  }
+
   & .dkcp-digit {
     font-size: 0.6em;
     font-family: var(--gothic);
     opacity: 0.5;
+
+    @media (width < 767px) {
+      font-size: 0.45em;
+    }
   }
 
   & .dkcp-title {
@@ -89,10 +123,22 @@
     font-weight: 600;
     line-height: 1;
     margin-bottom: 0.3em;
+
+    @media (width < 767px) {
+      font-size: 0.5em;
+      font-weight: 500;
+    }
   }
 
   & .dkcp-definition {
+
     font-family: var(--gothic);
+    font-size: 0.8em;
+    line-height: 1.1;
+
+    @media (width < 767px) {
+      font-size: 0.5em;
+    }
 
   }
 
