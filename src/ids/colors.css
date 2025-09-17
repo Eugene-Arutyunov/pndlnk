@@ -16,7 +16,7 @@ body {
 
 .dark-theme {
   --ids__text-RGB: 240, 240, 240;
-  --ids__link-RGB: 44, 44, 44;
+  --ids__link-RGB: 240, 240, 240;
   --ids__hover-RGB: 255, 100, 90;
   --ids__accent-RGB: 57, 53, 216;
   --ids__mark-RGB: 255, 200, 29;

@@ -33,6 +33,13 @@
 }
 
 @font-face {
+  font-family: "Robert";
+  font-style: italic;
+  font-display: swap;
+  src: url("fonts/Robert/CoFoRobert-BookItalic-Trial.otf") format("opentype");
+}
+
+/* @font-face {
   font-family: "Newton";
   font-style: normal;
   font-weight: 400;
@@ -85,7 +92,7 @@
     url("fonts/Newton/Newton_Extra Bold.woff2") format("woff2"),
     url("fonts/Newton/Newton_Extra Bold.woff") format("woff"),
     url("fonts/Newton/Newton_Extra Bold.ttf") format("truetype");
-}
+} */
 
 :root {
   --gothic: "CoFoGothic";

@@ -12,8 +12,12 @@
 .gothic {
   font-family: var(--gothic);
   font-weight: 350;
-  font-size: 1.08em;
+  font-size: 1.07em;
   line-height: 1.21;
+
+  & em {
+    font-size: 0.97em;
+  }
 }
 
 .mono {
