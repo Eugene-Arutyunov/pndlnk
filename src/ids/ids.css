@@ -36,6 +36,10 @@
       }
     }
 
+    &.caption {
+      font-size: 0.8em;
+    }
+
   }
 
   & h1,
@@ -61,6 +65,7 @@
     line-height: calc(var(--ids__density) / 1.3);
     margin-bottom: 0.2em;
     letter-spacing: 0em;
+    margin-left: -0.04em;
 
 
     &.XL {

@@ -1,12 +1,14 @@
 .article-title {
-
   --padding: 2em;
   margin: 0 calc(var(--padding) * -1) 1em;
   padding: var(--padding);
+  padding-right: 4em;
   min-height: 25em;
+}
 
-
-
+.title-nav {
+  display: flex;
+  gap: 1em;
 }
 
 .gothic {
@@ -22,6 +24,10 @@
 
 .mono {
   font-family: var(--mono);
+}
+
+.hand {
+  font-family: var(--hand);
 }
 
 .section {

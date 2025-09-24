@@ -132,7 +132,6 @@
     font-size: 0.8em;
     line-height: 1.1;
 
-
     @media (width < 767px) {
       font-size: 0.5em;
     }
@@ -147,11 +146,8 @@
   }
 }
 
-
-
 /* Драфт-режим */
 .dkcp-component--draft {
-
   & .dkcp-top {
     background-color: transparent;
     border-left: 2px solid rgba(var(--ids__text-RGB), 1);
@@ -178,9 +174,7 @@
   }
 
   & .dkcp-facade {
-
     & .dkcp-row {
-
       &.columns {
         & .dkcp-block {
           min-height: 10em;
@@ -206,7 +200,6 @@
   & .dkcp-bottom {
     min-height: 2em;
   }
-
 
   & .dkcp-block {
     background-color: transparent;
@@ -253,6 +246,5 @@
         /*font-size: 0.5em;*/
       }
     }
-
   }
 }
