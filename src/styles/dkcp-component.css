@@ -105,7 +105,6 @@
 
   & .dkcp-digit {
     font-size: 0.6em;
-    font-family: var(--gothic);
     opacity: 0.5;
 
     @media (width < 767px) {
@@ -128,7 +127,6 @@
   }
 
   & .dkcp-definition {
-    font-family: var(--gothic);
     font-size: 0.8em;
     line-height: 1.1;
 

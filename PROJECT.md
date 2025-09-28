@@ -20,9 +20,9 @@
 
 В проекте используются кастомные шрифты:
 
-- **Robert** — основной шрифт для body текста
+- **CoFoGothic** — основной шрифт для body текста
 - **CoFoSansSemi-Mono** — заголовки и навигация
-- **CoFoGothic** — дополнительный шрифт
+- **Robert** — дополнительный шрифт
 - **CoFoHand** — для списков
 
 ### Оптимизация загрузки
@@ -32,7 +32,7 @@
 1. **Предзагрузка в HTML** (в `src/includes/layout.html`):
 
 ```html
-<link rel="preload" href="/fonts/Robert/CoFoRobert-Book-Trial.otf" as="font" type="font/otf" crossorigin />
+<link rel="preload" href="/fonts/CoFoGothic-VF-Trial.ttf" as="font" type="font/ttf" crossorigin />
 <link rel="preload" href="/fonts/CoFoSansSemi-Mono-VF-Trial.ttf" as="font" type="font/ttf" crossorigin />
 ```
 
@@ -40,10 +40,10 @@
 
 ```css
 @font-face {
-  font-family: "Robert";
+  font-family: "CoFoGothic";
   font-style: normal;
   font-display: swap;
-  src: url("fonts/Robert/CoFoRobert-Book-Trial.otf") format("opentype");
+  src: url("fonts/CoFoGothic-VF-Trial.ttf") format("truetype");
 }
 ```
 

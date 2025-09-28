@@ -25,7 +25,7 @@
   src: url("fonts/CoFoHand-Regular-Trial.otf") format("opentype");
 }
 
-@font-face {
+/* @font-face {
   font-family: "Robert";
   font-style: normal;
   font-display: swap;
@@ -37,9 +37,9 @@
   font-style: italic;
   font-display: swap;
   src: url("fonts/Robert/CoFoRobert-BookItalic-Trial.otf") format("opentype");
-}
+} */
 
-/* @font-face {
+@font-face {
   font-family: "Newton";
   font-style: normal;
   font-weight: 400;
@@ -92,7 +92,7 @@
     url("fonts/Newton/Newton_Extra Bold.woff2") format("woff2"),
     url("fonts/Newton/Newton_Extra Bold.woff") format("woff"),
     url("fonts/Newton/Newton_Extra Bold.ttf") format("truetype");
-} */
+}
 
 :root {
   --gothic: "CoFoGothic";
@@ -104,15 +104,15 @@
 }
 
 body {
-  font-family: var(--serif);
+  font-family: var(--gothic);
   -webkit-font-smoothing: antialiased;
-  font-weight: 400;
+  font-weight: 350;
 }
 
 /* Density */
 
 :root {
-  --ids__density: 1.3;
+  --ids__density: 1.22;
 }
 
 body {
@@ -126,8 +126,8 @@ html {
   --mobile-font-size-min: 14;
   --mobile-font-size-max: 32;
 
-  --desktop-font-size-min: 11;
-  --desktop-font-size-max: 22;
+  --desktop-font-size-min: 12;
+  --desktop-font-size-max: 24;
 
   --mobile-viewport-min: 320;
   --mobile-desktop-breakpoint: 768;
