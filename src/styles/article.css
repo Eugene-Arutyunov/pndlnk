@@ -3,7 +3,7 @@
   margin: 0 calc(var(--padding) * -1) 1em;
   padding: var(--padding);
   padding-right: 4em;
-  min-height: 25em;
+  /* min-height: 25em; */
 }
 
 .title-nav {
@@ -11,16 +11,6 @@
   gap: 1em;
 }
 
-.gothic {
-  /* font-family: var(--gothic); */
-  /* font-weight: 350; */
-  /* font-size: 1.07em; */
-
-
-  & em {
-    font-size: 1.02em;
-  }
-}
 
 .mono {
   font-family: var(--mono);
@@ -48,4 +38,11 @@
 
 .section {
   margin: 3em 0;
+}
+
+.tile {
+  border: 1px solid rgba(var(--ids__text-RGB), 0.3);
+  border-right: none;
+  border-bottom: none;
+  padding: 0.5em;
 }

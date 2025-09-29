@@ -164,7 +164,8 @@
 
   & em {
     font-family: var(--serif);
-    /* font-size: 0.97em; */
+    font-size: 1.05em;
+
   }
 
   & blockquote {
