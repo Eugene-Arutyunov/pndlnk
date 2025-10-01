@@ -4,10 +4,16 @@
   padding: var(--padding);
   padding-right: 4em;
   /* min-height: 25em; */
+
+  @media (width < 767px) {
+    margin: 0;
+    --padding: 1em;
+  }
 }
 
 .title-nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
 }
 
@@ -45,4 +51,45 @@
   border-right: none;
   border-bottom: none;
   padding: 0.5em;
+}
+
+.course-session {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 1em;
+  border-top: 1px solid rgba(var(--ids__text-RGB), 0.3);
+  padding-top: 0.5em;
+
+  & .session-number {
+    width: 3.5em;
+
+    & p {
+      font-size: 0.8em;
+
+    }
+  }
+
+  & .session-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 8em;
+    height: 4.5em;
+    background-color: rgba(var(--ids__text-RGB), 0.3);
+    border-radius: 1em;
+    corner-shape: squircle;
+
+    & .in-progress {
+      font-size: 0.8em;
+      opacity: 0.5;
+    }
+
+
+
+  }
+
+  & .session-description {
+    width: 20em;
+  }
 }

@@ -141,11 +141,15 @@
 
   & .dkcp-hint {
     font-family: var(--hand);
+    color: rgba(var(--ids__pen-RGB), 1);
   }
 }
 
+
 /* Драфт-режим */
 .dkcp-component--draft {
+  margin: 4em 0 2em;
+
   & .dkcp-top {
     background-color: transparent;
     border-left: 2px solid rgba(var(--ids__text-RGB), 1);
@@ -237,8 +241,7 @@
 
     & .dkcp-definition {
       font-family: var(--hand);
-      /*font-size: 0.8em;*/
-      /*line-height: 1.1;*/
+      color: rgba(var(--ids__pen-RGB), 1);
 
       @media (width < 767px) {
         /*font-size: 0.5em;*/
