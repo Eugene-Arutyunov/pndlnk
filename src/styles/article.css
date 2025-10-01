@@ -4,6 +4,7 @@
   padding: var(--padding);
   padding-right: 4em;
   /* min-height: 25em; */
+  background-color: rgba(var(--ids__surface-RGB), 1);
 
   @media (width < 767px) {
     margin: 0;
