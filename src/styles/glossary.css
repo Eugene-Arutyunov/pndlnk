@@ -1,0 +1,13 @@
+.term {
+  font-family: var(--serif);
+
+  & strong {
+    text-transform: lowercase;
+    font-family: var(--gothic);
+    font-weight: 700;
+
+    &:not(.secondary) {
+      color: rgba(var(--ids__accent-RGB), 1);
+    }
+  }
+}
