@@ -36,6 +36,7 @@
       &.serif {
         font-size: 1.44em;
         line-height: 1.2;
+
       }
 
       &.mono {
@@ -165,6 +166,7 @@
   & em {
     font-family: var(--serif);
     font-size: 1.05em;
+    line-height: 1;
 
   }
 

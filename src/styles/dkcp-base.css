@@ -1,0 +1,26 @@
+@keyframes app {
+  0% {
+    color: yellow;
+  }
+
+  50% {
+    color: blue;
+
+  }
+
+  100% {
+    color: red;
+
+  }
+}
+
+.intro {
+
+  & span {
+
+    color: grey;
+
+    display: inline-block;
+    animation: app 1s infinite ease-in;
+  }
+}

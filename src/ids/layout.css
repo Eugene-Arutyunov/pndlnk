@@ -16,6 +16,16 @@
   &.XL {
     height: calc(var(--ids__density) * 4em);
   }
+
+  &.top-screen-space {
+    &.M {
+      height: 4vh;
+    }
+
+    &.L {
+      height: 12vh;
+    }
+  }
 }
 
 .ids__wrapper {

@@ -1,44 +1,55 @@
 {% extends 'layout.html' %} {% set pageTitle = 'База ДКЦП' %} {% block content %}
-<div class="ids__space L"></div>
-<div class="ids__wrapper L">
-  <div class="article-title dark-theme">
-    <p class="mono">Курс в записи  ·  5 лекций по 1,5 часа  ·  <a href="#pricing">Тарифы</a>  ·  <a href="#buy">Оплатить</a></p>
-    <h1 class="XL">База ДКЦП</h1>
-    <p class="loud mono">Фреймворк, который поможет проверить, «не хуйню ли мы делаем». Пригодится, если вы что-то продаёте или помогаете продавать.</p>
-    <div class="ids__space XL"></div>
-    <div class="title-nav mono">
+<div class="ids__space top-screen-space M"></div>
+
+<div class="article">
+  <div class="ids__wrapper L">
+    <div class="article-title dark-theme">
+      <h1 class="XL">База ДКЦП</h1>
+      <p class="loud mono">Фреймворк, который поможет проверить, «не хуйню ли мы делаем». Пригодится, если вы что-то продаёте или помогаете продавать.</p>
+      <div class="ids__space XL"></div>
+    </div>
+  </div>
+  <div class="ids__wrapper L sticky">
+    <div class="article-title-nav dark-theme">
+      <div class="title-nav-item accent">
+        <a href="#pricing" class="promo-link">Купить</a>
+      </div>
+
+      <div class="title-nav-item">
+        <em>5 лекций в записи</em>
+      </div>
       <div class="title-nav-item">
         <a href="#bad">Проблема</a>
       </div>
       <div class="title-nav-item">
-        <a href="#good">Ответ</a>
+        <a href="#good">Решение</a>
       </div>
       <div class="title-nav-item">
-        <a href="#dkcp">ДКЦП</a>
+        <a href="#course">Программа курса</a>
       </div>
       <div class="title-nav-item">
-        <a href="#dkcp">Программа курса</a>
+        <a href="#authors">Авторы</a>
       </div>
       <div class="title-nav-item">
-        <a href="#dkcp">Авторы</a>
-      </div>
-      <div class="title-nav-item">
-        <a href="#dkcp">Тарифы</a>
+        <a href="#pricing">Тарифы</a>
       </div>
     </div>
   </div>
-</div>
-<div class="ids__space M"></div>
-<div class="article">
+
+  <div class="ids__space top-screen-space L" id="bad"></div>
+
   <div class="ids__wrapper">
-    <p class="loud">
-      <em>Вроде бы все знают,</em> что для старта и уверенной работы любого бизнес-проекта нужна то ли маркетинговая стратегия, то ли бренд-платформа, в которой обязательно должны
-      быть: миссия, ценности, видение, суть бренда, его роль, архетип, уникальные атрибуты, функциональные и эмоциональные выгоды, позиционирование, характер, тон оф войс, ризонс
-      ту билив или хотя бы утэпэ.
-    </p>
-    <p class="loud">Как это связано? Какие части для чего нужны? Как убедиться, что они придуманы нормально? Признаваться не принято, но <em>этого не знает никто</em>.</p>
+    <div class="intro">
+      <p class="loud">
+        <em>Все знают,</em> что для старта и уверенной работы любого бизнес-проекта нужна то ли маркетинговая стратегия, то ли платформа бренда, и там обязательно нужны:
+        <span>миссия,</span> <span>ценности,</span> <span>видение,</span> <span>суть бренда,</span> <span>его роль,</span> <span>архетип,</span> <span>уникальные атрибуты,</span>
+        <span>функциональные</span> и <span>эмоциональные выгоды,</span> <span>позиционирование,</span> <span>характер,</span> <span>тон оф войс,</span>
+        <span>ризонс ту билив</span> или хотя бы <span>утэпэ.</span>
+      </p>
+    </div>
+    <p class="loud">Как это связано? Какие части — для чего? Как убедиться, что они есть и годятся для работы? Признаваться не принято, но <em>этого не знает никто</em>.</p>
     <div class="ids__text-width">
-      <p class="gothic">Предположим, вся эта маркетингово-брендовая платформо-стратегия у нас уже есть. Тогда:</p>
+      <p class="gothic">Предположим, вся эта маркетингово-брендовая платформо-стратегия у нас уже готова. Тогда:</p>
       <ul>
         <li>или это бессмысленный водянистый булщит, который все игнорируют, вспоминая <em>только для обоснования</em> решений;</li>
         <li>либо это хорошие по качеству идеи, но они <em>понятны только авторам,</em> никто другой не в может использовать их в работе.</li>
@@ -73,24 +84,11 @@
           <p>Топы рисуют графики и цифры, изо всех сил стараясь показать как здорово они умеют рисовать графики</p>
         </div>
       </div>
-      <!--
-      <div class="ids__sequence-item">
-        <div class="tile">
-          <p>про разобщённость</p>
-          <p>заборы, считать друг друга мудаками</p>
-        </div>
-      </div>
-      <div class="ids__sequence-item">
-        <div class="tile"><p>компромиссные решения</p></div>
-      </div>
-      <div class="ids__sequence-item">
-        <div class="tile"><p>подрядчик ждёт, что про продукт ему расскажет заказчик, а заказчик ждёт, что про продукт ему расскажет подрядчик</p></div>
-      </div>
     </div>
   </div>
   <div class="ids__space M"></div>
   <div class="ids__wrapper">
-    <div class="ids__text-width">-->
+    <div class="ids__text-width">
       <h3>Но мы же не маленькие!</h3>
       <p>У всех, кто не первый день в профессии, есть свои проверенные приёмы защиты от риска, хаоса и пробуксовок.</p>
 
@@ -118,8 +116,10 @@
 
       <p>А что помогло бы?</p>
     </div>
+  </div>
 
-    <div class="ids__space L"></div>
+  <div id="good" class="ids__space L"></div>
+  <div class="ids__wrapper">
     <h2>Ценностное предложение</h2>
 
     <div class="ids__text-width">
@@ -127,8 +127,7 @@
         Обычно это определение встречается в качестве ещё одной формулировки из платформы бренда. Мы предлагаем другой подход: не одна короткая формулировка, а совокупность ответов
         на главные вопросы о бизнесе.
       </p>
-      <!-- <p>... нет общего языка, чтобы связать всё это в один конструктивный разговор.</p>
-      <p>Мы предлагаем вам максимально практичный взгляд на абстрактные вопросы ценности</p> -->
+
       <p>Ценностное предложение есть у всего, что продаётся — неважно, это солидный бренд или шаурма на улице. Ценностное предложение можно выявить, задавая привычные вопросы:</p>
       <ul>
         <li>Что продаётся? Какое оно?</li>
@@ -184,8 +183,10 @@
       </p>
       <p>Обо всём этом — наш курс.</p>
     </div>
-
-    <div class="ids__space L"></div>
+  </div>
+  <div class="ids__space M"></div>
+  <div class="ids__wrapper">
+    <div id="course" class="ids__space L"></div>
     <h2>Программа курса</h2>
     <p>Коротко, <a href="#">с отзывами</a>.</p>
 
@@ -248,7 +249,7 @@
       </div>
     </div>
   </div>
-  <div class="ids__wrapper L">
+  <div id="authors" class="ids__wrapper L">
     <div class="ids__space L"></div>
     <h2>Авторы</h2>
 
@@ -274,6 +275,8 @@
       </div>
     </div>
   </div>
+</div>
+<div class="article">
   <div id="pricing"></div>
   <div class="ids__space L"></div>
   <div class="ids__wrapper L">
@@ -357,4 +360,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}

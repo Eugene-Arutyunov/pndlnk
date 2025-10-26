@@ -2,7 +2,7 @@
   --ids__text-RGB: 35, 37, 38;
 
   --ids__link-RGB: 44, 44, 44;
-  --ids__hover-RGB: 255, 75, 75;
+  --ids__hover-RGB: 245, 65, 55;
   --ids__accent-RGB: 255, 105, 105;
   --ids__pen-RGB: 0, 65, 205;
   --ids__mark-RGB: 255, 200, 29;
@@ -18,8 +18,8 @@ body {
 .dark-theme {
   --ids__text-RGB: 240, 240, 240;
   --ids__link-RGB: 240, 240, 240;
-  --ids__hover-RGB: 255, 100, 90;
-  --ids__accent-RGB: 57, 53, 216;
+  --ids__hover-RGB: 245, 65, 55;
+  --ids__accent-RGB: 255, 105, 105;
   --ids__mark-RGB: 255, 200, 29;
   --ids__surface-RGB: 45, 47, 48;
   --ids__background-RGB: 35, 37, 38;
