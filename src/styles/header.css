@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
 
-  @media (width < 767px) {
+  @media (width < 768px) {
     padding: 0.5em calc(var(--ids__density) * 0.4em);
     flex-wrap: wrap;
   }
@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     gap: 0.5em;
 
-    @media (width < 767px) {
+    @media (width < 768px) {
       width: 100%;
       margin-bottom: 0.5em;
       font-size: var(--smaller);
@@ -30,7 +30,7 @@
       width: 15.3em;
       margin-bottom: -0.17em;
 
-      @media (width < 767px) {
+      @media (width < 768px) {
         width: 100%;
 
       }

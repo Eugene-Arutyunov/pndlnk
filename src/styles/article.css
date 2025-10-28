@@ -5,12 +5,15 @@
     margin: 0 calc(var(--padding) * -1);
     padding: var(--padding);
     padding-right: 4em;
-    height: 60vh;
+    height: 68vh;
+    max-height: 24em;
     background-color: rgba(var(--ids__surface-RGB), 1);
 
-    @media (width < 767px) {
+    @media (width < 768px) {
       margin: 0;
       --padding: 1em;
+      padding-right: 1em;
+      height: auto;
     }
   }
 
@@ -20,6 +23,11 @@
     font-family: var(--mono);
     margin: 0 calc(var(--padding) * -1) 1em;
     gap: 1em;
+
+    @media (width < 768px) {
+      margin: 0;
+      --padding: 1em;
+    }
 
     & .title-nav-item {
 
@@ -51,12 +59,12 @@
     top: 0px;
     z-index: 1;
     height: 3em;
-    /* background-color: yellow; */
 
     &.stuck {
       width: 100%;
       max-width: none;
       margin: 0;
+      padding: 0;
 
 
 
