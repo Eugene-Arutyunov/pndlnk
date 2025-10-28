@@ -89,6 +89,28 @@
     @media (width < 768px) {
       width: 100%;
     }
+
+
+    & .with-sidenote {
+      position: relative;
+
+      & .sidenote {
+        font-size: 0.7em;
+        width: 90%;
+        margin-bottom: 2em;
+
+        @media (width > 767px) {
+          position: absolute;
+          top: 0;
+          width: 45%;
+          left: 110%;
+
+          font-size: 0.7em;
+        }
+      }
+
+
+    }
   }
 }
 

@@ -1,13 +1,23 @@
 .term {
   font-family: var(--serif);
+  text-align: justify;
+  hyphens: auto;
 
   & strong {
     text-transform: lowercase;
     font-family: var(--gothic);
     font-weight: 700;
+    position: relative;
+    /* left: -0.5em;
+    margin-right: -0.5em; */
 
     &:not(.secondary) {
       color: rgba(var(--ids__accent-RGB), 1);
     }
+  }
+
+  & .links {
+    font-size: 0.8em;
+    font-family: var(--gothic);
   }
 }

@@ -1,136 +1,32 @@
 {% extends 'layout.html' %} {% set pageTitle = 'Понедельник' %} {% block content %}
 <div class="ids__space XL"></div>
 <div class="ids__wrapper">
-  <div class="term">
-    <p>
-      <strong>Понедельник.</strong> Опыто-конструкторское бюро, коллектив аналитиков, консультантов, проектировщиков и исследователей. Наша работа — конструировать впечатления от
-      взаимодействия с компаниями и улучшать жизнь людей. Мы создаём лучший опыт покупателей и сотрудников, делая его фактором конкурентного преимущества для наших заказчиков.
-    </p>
-  </div>
+  {% include 'glossary/ponedelnik.html' %}
 
   <div class="ids__space L"></div>
-  <h4>Продукты</h4>
-  <div class="ids__sequence XL gap-M">
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Функция</strong> Название целенаправленного изменения некоторой системы с некоторого начального состояния в некоторое конечное состояние.</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Процессы</strong> Хронологические, т.е. упорядоченные во времени последователности выполнения действий, необходимых для реализации функции.</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p>
-          <strong>Взаимодействие</strong> Система взаимосвязанных и взаимообусловленных действий, связанных циклической зависимостью, при которой действие одного субъекта является
-          одновременно причиной и следствием ответных действий других субъектов.
-        </p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Опыт</strong> Совокупность знаний и впечатлений, которые получил человек, взаимодействуя с чем-либо в мире.</p>
-        <p>
-          <strong class="secondary">о. потребительский, клиентский, сотрудника</strong> Совокупность знаний и впечатлений, которые получил человек, взаимодействуя с людьми,
-          объектами и информацией, ассоциированными в его сознании с компанией (брендом)
-        </p>
-      </div>
-    </div>
+  <!-- <h4>Продукты</h4> -->
+  <div class="ids__sequence XL gap-L">
+    <div class="ids__sequence-item">{% include 'glossary/function.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/processes.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/interaction.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/experience.html' %}</div>
 
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Артефакт</strong> [ЦП] Набор товаров, услуг и информации, необходимый и достаточный для разрешения ключевого конфликта клиентского сегмента.</p>
-        <p><strong>Продукт</strong> (какой–то компании). То же самое, что артефакт</p>
-      </div>
-    </div>
+    <div class="ids__sequence-item">{% include 'glossary/artifact.html' %}</div>
 
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p>
-          <strong>Атрибуты артефакта</strong> Отличительные особенности (свойства и/или функции) артефакта как набора (эмерджентные свойства) или отдельных артефактов, входящих в
-          набор, которые удовлетворяют следюущим признакам: благодаря им артефакт способен разрешать ключевой конфликт этого ценностного предложения Они могут использоваться для
-          сравнения и ранжирования артефактов разных компаний
-        </p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p>
-          <strong>Деятельность</strong> 1. Специфический вид человеческой активности, направленной на преобразование действительности и/или самого себя. 2. Часть глубинной
-          структуры, содержащая информацию об определенном типе активностей.
-        </p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Действие</strong> Единица деятельности, целенаправленная преднамеренная активность, осуществляемая субъектом деятельности произвольно.</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Операция</strong> Строго регламентированное действие, выполняемое системой/программой. Операция может быть автоматизирована</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Идея</strong> Возможное действие или результат</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Цель</strong> Результат, желаемое состояние системы, без уточнения способа достижения.</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Задача</strong> Действие, организованное как социальный институт: с правилами, контролем, ответственностью. Нормированный способ движения к цели.</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Явление</strong> Фраза, сформулированная как корректный предикат, т.е. подлежащее и сказуемое.</p>
-        <p><strong class="secondary">Нежелательное явление</strong>, НЯ (для кого-то) Явление, которое сам человек считает для себя нежелательным</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term"><strong>Ментальная модель</strong> Мыслительная конструкция, базовый концепт для размышлений об абстрактном явлении.</div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p>
-          <strong>ДКЦП</strong> Ментальная модель для создания и анализа ценностных предложений. В основе ДКЦП лежит объяснение явления символического обмена между участниками
-          обмена через систему инвариантов обмена.
-        </p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p>
-          <strong>Инварианты процесса обмена</strong>. Универсальные компоненты, присутствующие в любой сделке независимо от участников и предмета обмена. Теоретическая основа
-          модели ДКЦП.
-        </p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p>
-          <strong>Ключевой мотивационный конфликт</strong>. Осознаваемое представителем клиентского сегмента противоречие между стремлением изменить свой образ действия в рамках
-          определенной деятельности (драйвер) и факторами, препятствующими этому изменению (барьеры). Возникает при выполнении работы.
-        </p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Работа</strong> Ограниченное во времени усилия по переходу от текущего к желаемому образу действия ради получения конкретной награды.</p>
-      </div>
-    </div>
-    <div class="ids__sequence-item">
-      <div class="term">
-        <p><strong>Функция</strong>. Общее название проектируемого изменения системы с начального состояния в конечное.</p>
-      </div>
-    </div>
+    <div class="ids__sequence-item">{% include 'glossary/artifact-attributes.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/activity.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/action.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/operation.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/idea.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/goal.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/task.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/phenomenon.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/mental-model.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/dkcp.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/exchange-invariants.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/kmc.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/job.html' %}</div>
+    <div class="ids__sequence-item">{% include 'glossary/function-2.html' %}</div>
   </div>
 </div>
 

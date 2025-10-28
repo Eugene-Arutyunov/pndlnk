@@ -76,6 +76,15 @@
     margin-left: -0.04em;
 
 
+    &.L {
+      font-size: 5.5em;
+
+
+      @media (width < 768px) {
+        font-size: 2.4em;
+      }
+    }
+
     &.XL {
       font-size: 6.5em;
 
