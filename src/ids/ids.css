@@ -172,6 +172,21 @@
     }
   }
 
+  & ul.inline-block {
+    & li {
+      display: inline-block;
+      padding: 0.3em 0.5em 0.2em;
+      border: 2px solid rgba(var(--ids__text-RGB), 1);
+      border-right: none;
+      border-bottom: none;
+
+      &:before {
+        content: none;
+      }
+    }
+
+  }
+
   & em {
     font-family: var(--serif);
     font-size: 1.05em;
