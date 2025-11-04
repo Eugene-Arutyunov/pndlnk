@@ -105,10 +105,9 @@
 }
 
 .author {
-
   .author-portrait {
     position: relative;
-    margin-bottom: 1em;
+    margin-bottom: 0.3em;
 
     & .author-name {
       font-size: 1.05em;
@@ -125,11 +124,10 @@
 
   & p {
     padding-right: 1em;
-    font-family: var(--serif);
-    font-size: 0.8em;
+
+    font-size: var(--smaller);
   }
 }
-
 
 .pricing-grid {
   display: grid;
@@ -139,7 +137,8 @@
 
   @media (width < 768px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(8, auto) calc(var(--ids__density) * 2.4em) repeat(8, auto);
+    grid-template-rows:
+      repeat(8, auto) calc(var(--ids__density) * 2.4em) repeat(8, auto);
   }
 }
 
@@ -199,8 +198,11 @@
 
     &:nth-child(3) {
       grid-column: 1 / -1;
-      grid-row: 9 / 16;
-      grid-template-rows: subgrid;
+      grid-row: 9 / -1;
+      grid-template-rows: repeat(7, auto);
+      gap: 0;
+      padding-top: calc(var(--ids__density) * 1em);
+      padding-bottom: 0;
     }
   }
 }
@@ -223,7 +225,6 @@
 
 .promo-link.second {
   background-color: rgb(245, 90, 90);
-
 
   &:hover {
     background-color: rgb(var(--ids__hover-RGB));
