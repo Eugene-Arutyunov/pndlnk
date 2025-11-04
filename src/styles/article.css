@@ -17,6 +17,15 @@
       max-height: none;
       height: auto;
     }
+
+    & mark {
+      background-color: transparent;
+      text-decoration: underline;
+      text-underline-offset: 0.1em;
+      text-decoration-thickness: 0.3em;
+      text-decoration-skip-ink: none;
+      text-decoration-color: rgba(var(--ids__accent-RGB), 1);
+    }
   }
 
   & .article-title-columns {
@@ -37,14 +46,7 @@
 
   }
 
-  & mark {
-    background-color: transparent;
-    text-decoration: underline;
-    text-underline-offset: 0.1em;
-    text-decoration-thickness: 0.3em;
-    text-decoration-skip-ink: none;
-    text-decoration-color: rgba(var(--ids__accent-RGB), 1);
-  }
+
 
   & .article-title-nav {
     display: flex;
