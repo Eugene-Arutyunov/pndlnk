@@ -1,0 +1,10 @@
+.illustration-container {
+  width: 22em;
+  height: 22em;
+}
+
+.illustration-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

@@ -1,0 +1,539 @@
+{% extends 'layout.html' %} {% set pageTitle = 'ДКЦП' %} {% block content %}
+<div class="ids__space XL"></div>
+<div class="ids__wrapper">
+  <div class="illustration-container dark-theme">
+    <canvas class="illustration-canvas" id="illustration-canvas"></canvas>
+  </div>
+
+  <script>
+    // 3D model data - храним пространственные координаты
+    const model3D = {
+      center: { x: 0, y: 0, z: 0 },
+      points: [],
+      originalPoints: [], // исходные координаты для вращения
+      radius: 400, // расстояние от центра до точек
+      numPoints: 45, // начальное количество точек
+      rotation: { x: 0, y: 0, z: 0 }, // текущие углы вращения в радианах
+      nextId: 45 // счетчик для новых линий
+    };
+
+    // Система управления жизненным циклом линий
+    const activeLines = []; // массив с метаданными каждой линии
+    const lineStates = {
+      APPEARING: 'appearing',
+      ACTIVE: 'active',
+      DISAPPEARING: 'disappearing'
+    };
+
+    // Параметры управления линиями
+    const lineConfig = {
+      minLines: 30,
+      maxLines: 60,
+      fadeDuration: 250, // миллисекунды для fade-in/out (в 2 раза быстрее)
+      addIntervalMin: 200, // минимальный интервал добавления (мс) - в 5 раз чаще
+      addIntervalMax: 400, // максимальный интервал добавления (мс) - в 5 раз чаще
+      removeIntervalMin: 300, // минимальный интервал удаления (мс) - в 5 раз чаще
+      removeIntervalMax: 500 // максимальный интервал удаления (мс) - в 5 раз чаще
+    };
+
+    // Генерация точек на сфере (равномерное распределение)
+    function generateSpherePoints(numPoints, radius) {
+      const points = [];
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // золотой угол для равномерного распределения
+      
+      for (let i = 0; i < numPoints; i++) {
+        const y = 1 - (i / (numPoints - 1)) * 2; // от -1 до 1
+        const radiusAtY = Math.sqrt(1 - y * y);
+        const theta = goldenAngle * i;
+        
+        const x = Math.cos(theta) * radiusAtY;
+        const z = Math.sin(theta) * radiusAtY;
+        
+        points.push({
+          x: x * radius,
+          y: y * radius,
+          z: z * radius,
+          id: i
+        });
+      }
+      
+      return points;
+    }
+
+    // Генерация случайной точки на сфере
+    function generateRandomSpherePoint(radius) {
+      // Генерируем случайную точку на единичной сфере
+      const theta = Math.random() * 2 * Math.PI; // азимутальный угол
+      const phi = Math.acos(2 * Math.random() - 1); // полярный угол (равномерное распределение)
+      
+      const x = Math.sin(phi) * Math.cos(theta);
+      const y = Math.cos(phi);
+      const z = Math.sin(phi) * Math.sin(theta);
+      
+      return {
+        x: x * radius,
+        y: y * radius,
+        z: z * radius
+      };
+    }
+
+    // Вращение точки вокруг оси X
+    function rotateX(point, angle) {
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      return {
+        x: point.x,
+        y: point.y * cos - point.z * sin,
+        z: point.y * sin + point.z * cos
+      };
+    }
+
+    // Вращение точки вокруг оси Y
+    function rotateY(point, angle) {
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      return {
+        x: point.x * cos + point.z * sin,
+        y: point.y,
+        z: -point.x * sin + point.z * cos
+      };
+    }
+
+    // Вращение точки вокруг оси Z
+    function rotateZ(point, angle) {
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+      return {
+        x: point.x * cos - point.y * sin,
+        y: point.x * sin + point.y * cos,
+        z: point.z
+      };
+    }
+
+    // Применение всех вращений к точке
+    function rotatePoint(point, rotation) {
+      let rotated = { ...point };
+      rotated = rotateX(rotated, rotation.x);
+      rotated = rotateY(rotated, rotation.y);
+      rotated = rotateZ(rotated, rotation.z);
+      return rotated;
+    }
+
+    // Проекция 3D -> 2D (ортогональная проекция с учетом глубины)
+    function project3DTo2D(point3D) {
+      const centerX = 500;
+      const centerY = 500;
+      
+      // Ортогональная проекция (вид сверху по оси Z)
+      return {
+        x: centerX + point3D.x,
+        y: centerY + point3D.y,
+        z: point3D.z // сохраняем Z для эффекта глубины
+      };
+    }
+
+    // Инициализация модели
+    function initializeModel() {
+      const initialPoints = generateSpherePoints(model3D.numPoints, model3D.radius);
+      model3D.originalPoints = initialPoints.map(p => ({ ...p }));
+      
+      // Инициализируем метаданные для начальных линий
+      initialPoints.forEach((point, index) => {
+        activeLines.push({
+          id: point.id,
+          state: lineStates.ACTIVE,
+          opacity: 1,
+          lengthProgress: 1.0,
+          createdAt: Date.now(),
+          fadeStartTime: null
+        });
+      });
+      
+      // Обновляем точки после инициализации метаданных
+      updateRotation();
+    }
+
+    // Обновление точек после вращения
+    function updateRotation() {
+      // Создаем новый массив точек на основе originalPoints и активных линий
+      // Фильтруем только те точки, которые есть в activeLines
+      const activeLineIds = new Set(activeLines.map(l => l.id));
+      model3D.points = model3D.originalPoints
+        .filter(point => activeLineIds.has(point.id))
+        .map(point => {
+          const rotated = rotatePoint(point, model3D.rotation);
+          return { ...rotated, id: point.id }; // Сохраняем id после вращения
+        });
+    }
+
+    // Обновление opacity и длины линий в процессе анимации
+    function updateLineOpacities() {
+      const now = Date.now();
+      const linesToRemove = [];
+      
+      activeLines.forEach(lineMeta => {
+        if (lineMeta.state === lineStates.APPEARING) {
+          if (lineMeta.fadeStartTime === null) {
+            lineMeta.fadeStartTime = now;
+          }
+          const elapsed = now - lineMeta.fadeStartTime;
+          const progress = Math.min(elapsed / lineConfig.fadeDuration, 1);
+          lineMeta.opacity = progress;
+          // Длина линии растет от середины (0.5) до полной длины (1.0)
+          lineMeta.lengthProgress = 0.5 + (progress * 0.5);
+          
+          if (progress >= 1) {
+            lineMeta.state = lineStates.ACTIVE;
+            lineMeta.fadeStartTime = null;
+            lineMeta.lengthProgress = 1.0;
+          }
+        } else if (lineMeta.state === lineStates.DISAPPEARING) {
+          if (lineMeta.fadeStartTime === null) {
+            lineMeta.fadeStartTime = now;
+          }
+          const elapsed = now - lineMeta.fadeStartTime;
+          const progress = Math.min(elapsed / lineConfig.fadeDuration, 1);
+          lineMeta.opacity = 1 - progress;
+          // Длина линии уменьшается от полной длины (1.0) до середины (0.5)
+          lineMeta.lengthProgress = 1.0 - (progress * 0.5);
+          
+          if (progress >= 1) {
+            // Собираем ID линий для удаления после итерации
+            linesToRemove.push(lineMeta.id);
+          }
+        } else {
+          // Для активных линий длина всегда полная
+          lineMeta.lengthProgress = 1.0;
+        }
+      });
+      
+      // Удаляем линии после завершения итерации
+      linesToRemove.forEach(id => removeLineById(id));
+    }
+
+    // Рендеринг Canvas
+    function renderIllustration() {
+      const canvas = document.getElementById('illustration-canvas');
+      if (!canvas) return;
+      
+      // Масштабирование canvas для правильного отображения
+      const container = canvas.closest('.illustration-container');
+      const rect = container.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      
+      // Устанавливаем размер canvas с учетом devicePixelRatio
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width = rect.width + 'px';
+      canvas.style.height = rect.height + 'px';
+      
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      
+      // Масштабируем координаты под новый размер (было 1000x1000, теперь rect.width x rect.height)
+      const scaleX = rect.width / 1000;
+      const scaleY = rect.height / 1000;
+      
+      const textColor = getComputedStyle(container || document.body).color;
+      
+      // Получаем цвет акцента для красных точек
+      const accentRGB = getComputedStyle(container || document.body).getPropertyValue('--ids__accent-RGB').trim();
+      const accentColor = accentRGB ? `rgba(${accentRGB}, 1)` : 'rgba(255, 105, 105, 1)';
+      
+      // Очищаем canvas
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      
+      // Обновляем opacity
+      updateLineOpacities();
+      
+      // Создаем карту метаданных
+      const lineMetaMap = new Map();
+      activeLines.forEach(meta => {
+        lineMetaMap.set(meta.id, meta);
+      });
+      
+      const activeLineIds = new Set(activeLines.map(l => l.id));
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      // Собираем точки для сортировки по Z
+      const pointsToRender = [];
+      model3D.originalPoints.forEach(originalPoint => {
+        if (!activeLineIds.has(originalPoint.id)) return;
+        const lineMeta = lineMetaMap.get(originalPoint.id);
+        if (!lineMeta) return;
+        
+        const rotatedPoint = rotatePoint(originalPoint, model3D.rotation);
+        const projected = project3DTo2D(rotatedPoint);
+        
+        pointsToRender.push({
+          projected,
+          lineMeta,
+          id: originalPoint.id,
+          z: rotatedPoint.z
+        });
+      });
+      
+      // Сортируем по Z для правильного порядка отрисовки
+      pointsToRender.sort((a, b) => b.z - a.z);
+      
+      // Рисуем линии
+      ctx.strokeStyle = textColor;
+      ctx.lineWidth = 2 * Math.min(scaleX, scaleY); // Соответствует SVG stroke-width="2" с учетом масштаба
+      
+      pointsToRender.forEach(({ projected, lineMeta, z }) => {
+        const lengthProgress = lineMeta.lengthProgress || 1.0;
+        
+        // Вычисляем перспективу на основе глубины (Z координаты)
+        const depthFactor = (z + model3D.radius) / (2 * model3D.radius);
+        const depthOpacity = 0.4 + depthFactor * 0.6; // Усиленный эффект перспективы
+        
+        // Масштабируем координаты проекции
+        const scaledX = (projected.x - 500) * scaleX + centerX;
+        const scaledY = (projected.y - 500) * scaleY + centerY;
+        
+        const startX = centerX + (scaledX - centerX) * 0.5;
+        const startY = centerY + (scaledY - centerY) * 0.5;
+        
+        let endX, endY;
+        if (lineMeta.state === lineStates.DISAPPEARING) {
+          endX = centerX + (scaledX - centerX) * lengthProgress;
+          endY = centerY + (scaledY - centerY) * lengthProgress;
+        } else {
+          endX = centerX + (scaledX - centerX) * lengthProgress;
+          endY = centerY + (scaledY - centerY) * lengthProgress;
+        }
+        
+        // Применяем перспективу к opacity линии
+        ctx.globalAlpha = lineMeta.opacity * depthOpacity;
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+      });
+      
+      // Рисуем круги красным цветом
+      ctx.fillStyle = accentColor;
+      pointsToRender.forEach(({ projected, lineMeta, z }) => {
+        const lengthProgress = lineMeta.lengthProgress || 1.0;
+        
+        // Вычисляем перспективу на основе глубины (Z координаты)
+        const depthFactor = (z + model3D.radius) / (2 * model3D.radius);
+        const depthOpacity = 0.4 + depthFactor * 0.6; // Усиленный эффект перспективы
+        
+        const scaledX = (projected.x - 500) * scaleX + centerX;
+        const scaledY = (projected.y - 500) * scaleY + centerY;
+        
+        const circleX = centerX + (scaledX - centerX) * lengthProgress;
+        const circleY = centerY + (scaledY - centerY) * lengthProgress;
+        
+        const baseRadius = 4 * Math.min(scaleX, scaleY);
+        const radius = baseRadius + (depthFactor - 0.5) * 2 * Math.min(scaleX, scaleY);
+        
+        // Opacity круга зависит от opacity линии, lengthProgress и перспективы
+        const circleOpacity = lineMeta.opacity * Math.max(0, (lengthProgress - 0.5) * 2) * depthOpacity;
+        ctx.globalAlpha = circleOpacity;
+        ctx.beginPath();
+        ctx.arc(circleX, circleY, radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    // Добавление новой линии
+    function addNewLine() {
+      // Проверяем максимальное количество линий
+      const activeCount = activeLines.filter(l => 
+        l.state !== lineStates.DISAPPEARING
+      ).length;
+      
+      if (activeCount >= lineConfig.maxLines) {
+        scheduleAddLine();
+        return;
+      }
+      
+      // Генерируем случайную точку на сфере
+      const newPoint = generateRandomSpherePoint(model3D.radius);
+      const newId = model3D.nextId++;
+      
+      // Добавляем точку в originalPoints (points будет обновлен в updateRotation)
+      const pointWithId = { ...newPoint, id: newId };
+      model3D.originalPoints.push({ ...pointWithId });
+      
+      // Добавляем метаданные линии
+      activeLines.push({
+        id: newId,
+        state: lineStates.APPEARING,
+        opacity: 0,
+        lengthProgress: 0.5, // Начинаем с середины
+        createdAt: Date.now(),
+        fadeStartTime: null
+      });
+      
+      scheduleAddLine();
+    }
+
+    // Удаление линии по ID
+    function removeLineById(id) {
+      // Удаляем из массива метаданных
+      const metaIndex = activeLines.findIndex(l => l.id === id);
+      if (metaIndex !== -1) {
+        activeLines.splice(metaIndex, 1);
+      }
+      
+      // Удаляем из originalPoints (points будет обновлен в updateRotation)
+      const pointIndex = model3D.originalPoints.findIndex(p => p.id === id);
+      if (pointIndex !== -1) {
+        model3D.originalPoints.splice(pointIndex, 1);
+      }
+    }
+
+    // Удаление случайной активной линии
+    function removeRandomLine() {
+      // Проверяем минимальное количество линий
+      const activeCount = activeLines.filter(l => 
+        l.state === lineStates.ACTIVE || l.state === lineStates.APPEARING
+      ).length;
+      
+      if (activeCount <= lineConfig.minLines) {
+        scheduleRemoveLine();
+        return;
+      }
+      
+      // Выбираем случайную активную линию (не исчезающую и не только что добавленную)
+      const candidates = activeLines.filter(l => 
+        l.state === lineStates.ACTIVE && 
+        Date.now() - l.createdAt > lineConfig.fadeDuration * 2 // не удаляем слишком новые
+      );
+      
+      if (candidates.length === 0) {
+        scheduleRemoveLine();
+        return;
+      }
+      
+      const randomLine = candidates[Math.floor(Math.random() * candidates.length)];
+      randomLine.state = lineStates.DISAPPEARING;
+      randomLine.fadeStartTime = null;
+      
+      scheduleRemoveLine();
+    }
+
+    // Таймеры для управления добавлением/удалением
+    let addLineTimeout = null;
+    let removeLineTimeout = null;
+
+    function scheduleAddLine() {
+      if (addLineTimeout) {
+        clearTimeout(addLineTimeout);
+      }
+      
+      const interval = lineConfig.addIntervalMin + 
+        Math.random() * (lineConfig.addIntervalMax - lineConfig.addIntervalMin);
+      
+      addLineTimeout = setTimeout(() => {
+        addNewLine();
+      }, interval);
+    }
+
+    function scheduleRemoveLine() {
+      if (removeLineTimeout) {
+        clearTimeout(removeLineTimeout);
+      }
+      
+      const interval = lineConfig.removeIntervalMin + 
+        Math.random() * (lineConfig.removeIntervalMax - lineConfig.removeIntervalMin);
+      
+      removeLineTimeout = setTimeout(() => {
+        removeRandomLine();
+      }, interval);
+    }
+
+    // Анимация вращения
+    let animationId = null;
+    const rotationSpeed = {
+      x: 0.002, // скорость вращения вокруг оси X (радиан/кадр)
+      y: 0.003, // скорость вращения вокруг оси Y
+      z: 0.001  // скорость вращения вокруг оси Z
+    };
+
+    function animate() {
+      // Обновляем углы вращения
+      model3D.rotation.x += rotationSpeed.x;
+      model3D.rotation.y += rotationSpeed.y;
+      model3D.rotation.z += rotationSpeed.z;
+      
+      // Обновляем позиции точек
+      updateRotation();
+      
+      // Перерисовываем
+      renderIllustration();
+      
+      // Продолжаем анимацию
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Запускаем анимацию при загрузке
+    function startAnimation() {
+      if (animationId === null) {
+        animate();
+        // Запускаем таймеры для добавления/удаления линий
+        scheduleAddLine();
+        scheduleRemoveLine();
+      }
+    }
+
+    // Останавливаем анимацию (для будущего использования)
+    function stopAnimation() {
+      if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+      
+      // Останавливаем таймеры
+      if (addLineTimeout) {
+        clearTimeout(addLineTimeout);
+        addLineTimeout = null;
+      }
+      if (removeLineTimeout) {
+        clearTimeout(removeLineTimeout);
+        removeLineTimeout = null;
+      }
+    }
+
+    // Инициализация модели
+    initializeModel();
+
+    // Обработчик изменения размера окна для пересчета canvas
+    let resizeTimeout = null;
+    function handleResize() {
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+      resizeTimeout = setTimeout(() => {
+        // Canvas пересчитается при следующем рендере
+      }, 100);
+    }
+    window.addEventListener('resize', handleResize);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        renderIllustration();
+        startAnimation();
+      });
+    } else {
+      renderIllustration();
+      startAnimation();
+    }
+
+    // Экспортируем модель и функции для будущего использования
+    window.illustrationModel3D = model3D;
+    window.project3DTo2D = project3DTo2D;
+    window.renderIllustration = renderIllustration;
+    window.startAnimation = startAnimation;
+    window.stopAnimation = stopAnimation;
+  </script>
+  
+</div>
+<div class="ids__space XL"></div>
+<div class="ids__space XL"></div>
+<div class="ids__space XL"></div>
+{% endblock %}
