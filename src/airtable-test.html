@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Тест Airtable API</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 2em auto;
+      padding: 0 1em;
+      line-height: 1.6;
+    }
+    .config {
+      background: #f5f5f5;
+      padding: 1em;
+      margin-bottom: 2em;
+      border-radius: 4px;
+    }
+    .config input {
+      width: 100%;
+      padding: 0.5em;
+      margin: 0.5em 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .form-group {
+      margin-bottom: 1em;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.25em;
+      font-weight: 500;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.75em;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    button {
+      background: #ff6969;
+      color: white;
+      border: none;
+      padding: 0.75em 2em;
+      font-size: 1em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #f54137;
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .status {
+      margin-top: 1em;
+      padding: 1em;
+      border-radius: 4px;
+      display: none;
+    }
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+    .status.sending {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+      display: block;
+    }
+    code {
+      background: #f5f5f5;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Тест отправки данных в Airtable</h1>
+  
+  <div class="config">
+    <h2>Настройки API</h2>
+    <p>Укажите данные вашей Airtable базы:</p>
+    <label>
+      Base ID:
+      <input type="text" id="baseId" placeholder="appXXXXXXXXXXXXXX" />
+    </label>
+    <label>
+      Table ID (имя таблицы):
+      <input type="text" id="tableId" placeholder="Заявки" />
+    </label>
+    <p><small>Base ID можно найти в URL вашей базы или в API документации Airtable</small></p>
+  </div>
+
+  <form id="testForm">
+    <div class="form-group">
+      <label for="name">Имя *</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="company">Название компании *</label>
+      <input type="text" id="company" name="company" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="telegram">Ник в телеграме *</label>
+      <input type="text" id="telegram" name="telegram" placeholder="@username" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+    
+    <button type="submit" id="submitBtn">Отправить тестовую заявку</button>
+  </form>
+
+  <div id="status" class="status"></div>
+
+  <script>
+    const API_TOKEN = 'patGs5l2YYQPM4Jcq.7f90034f164acb422bea9f978ac06f967e777579824617a95cbbb5965e8ab7f5';
+    
+    const form = document.getElementById('testForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusDiv = document.getElementById('status');
+    const baseIdInput = document.getElementById('baseId');
+    const tableIdInput = document.getElementById('tableId');
+
+    function showStatus(message, type) {
+      statusDiv.textContent = message;
+      statusDiv.className = `status ${type}`;
+    }
+
+    function hideStatus() {
+      statusDiv.className = 'status';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const baseId = baseIdInput.value.trim();
+      const tableId = tableIdInput.value.trim();
+      
+      if (!baseId || !tableId) {
+        showStatus('Пожалуйста, укажите Base ID и Table ID', 'error');
+        return;
+      }
+
+      const formData = {
+        name: document.getElementById('name').value.trim(),
+        company: document.getElementById('company').value.trim(),
+        telegram: document.getElementById('telegram').value.trim(),
+        email: document.getElementById('email').value.trim()
+      };
+
+      // Валидация
+      if (!formData.name || !formData.company || !formData.telegram || !formData.email) {
+        showStatus('Пожалуйста, заполните все поля', 'error');
+        return;
+      }
+
+      // Подготовка данных для Airtable
+      // Названия полей соответствуют таблице: Name, Company, Telegram, Email
+      const airtableData = {
+        records: [
+          {
+            fields: {
+              'Name': formData.name,
+              'Company': formData.company,
+              'Telegram': formData.telegram,
+              'Email': formData.email
+            }
+          }
+        ]
+      };
+
+      // URL для Airtable API
+      const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableId)}`;
+
+      // Отправка
+      submitBtn.disabled = true;
+      showStatus('Отправка данных...', 'sending');
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${API_TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(airtableData)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          throw new Error(result.error?.message || `Ошибка ${response.status}: ${response.statusText}`);
+        }
+
+        showStatus(`✅ Успешно! Заявка отправлена. ID записи: ${result.records[0].id}`, 'success');
+        form.reset();
+        
+      } catch (error) {
+        console.error('Ошибка:', error);
+        showStatus(`❌ Ошибка: ${error.message}`, 'error');
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
+

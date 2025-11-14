@@ -129,9 +129,53 @@
 
       <p>Наш интенсив – это возможность попрактиковаться и примерить на себя эту культуру через уникальный набор инструментов и практик.</p>
 
-
     </div>
   </div>
+
+  <div class="ids__space XL"></div>
+
+  <div class="ids__wrapper" id="application-form">
+    <div class="ids__text-width">
+      <h2 id="pricing">Записаться на интенсив</h2>
+      <div class="ids__space M"></div>
+      
+      <div class="form-container" id="form-container">
+        <form id="kscApplicationForm" class="application-form">
+          <div class="form-field-wrapper">
+            <div class="form-field form-field-first">
+              <label for="form-name">Имя</label>
+              <input type="text" id="form-name" name="name" required />
+            </div>
+            
+            <div class="form-field">
+              <label for="form-company">Название компании</label>
+              <input type="text" id="form-company" name="company" />
+            </div>
+            
+            <div class="form-field">
+              <label for="form-telegram">Ник в телеграме</label>
+              <input type="text" id="form-telegram" name="telegram" placeholder="@username" />
+            </div>
+            
+            <div class="form-field form-field-last">
+              <label for="form-email">Email</label>
+              <input type="email" id="form-email" name="email" required />
+            </div>
+          </div>
+          
+          <button type="submit" class="promo-link form-submit" id="form-submit-btn">
+            Отправить заявку
+          </button>
+          
+          <div class="form-status" id="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="ids__space XL"></div>
 </div>
+
+<script src="/assets/form-application.js" defer></script>
 
 {% endblock %}
