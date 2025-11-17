@@ -77,7 +77,7 @@
 
 
     &.L {
-      font-size: 5.5em;
+      font-size: 4em;
 
 
       @media (width < 768px) {

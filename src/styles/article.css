@@ -35,11 +35,13 @@
 
     & .article-title-column {
       &:nth-child(1) {
-        flex-grow: 3;
+        width: 67%;
+        /* flex-grow: 3; */
       }
 
       &:nth-child(2) {
-        flex-grow: 1;
+        width: 33%;
+        /* flex-grow: 1; */
       }
 
     }
@@ -201,8 +203,8 @@
   }
 
   & .ksc-title {
-    background-color: rgba(var(--ids__background-RGB), 1);
-    border: 2px solid rgba(var(--ids__text-RGB), 1);
+    background-color: rgba(var(--ids__surface-RGB), 1);
+    /* border: 2px solid rgba(var(--ids__text-RGB), 1); */
 
     padding-right: 1em;
 
