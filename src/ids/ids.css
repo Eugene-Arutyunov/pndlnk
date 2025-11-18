@@ -269,7 +269,40 @@
   }
 
   & table {
-    & caption {}
+    border-spacing: 0;
+
+    @media (max-width: 768px) {
+      font-size: 0.7em;
+    }
+
+    tr {
+      & th {
+        position: sticky;
+        top: 0px;
+        text-align: left;
+        border-bottom: 2px solid rgba(var(--ids__text-RGB), 1);
+        padding-bottom: 0.3em;
+        background-color: rgba(var(--ids__surface-RGB), 1);
+
+        @media (max-width: 768px) {
+          padding-top: 0.8em;
+        }
+      }
+
+      & td {
+        padding: 0.8em 0.5em 1em 0;
+        border-bottom: 1px solid rgba(var(--ids__text-RGB), 0.5);
+        vertical-align: top;
+
+
+      }
+
+      &:last-child {
+        & td {
+          border-bottom: none;
+        }
+      }
+    }
   }
 
   & hr {
