@@ -7,27 +7,35 @@
       <div class="ids__text-width">
         <h1 class="L">Культура создания ценности</h1>
       </div>
-      <div class="article-title-illustration">{% include 'dkcp-layered-model.html' %}</div>
+      <div class="article-title-illustration">
+        <div class="illustration-container" 
+           data-illustration-type="layered-house"
+           data-background-color="--ids__surface-RGB"
+           style="background-color: rgba(var(--ids__surface-RGB), 1);">
+          <canvas class="illustration-canvas"></canvas>
+        </div>
+      </div>
 
       <div class="article-title-columns">
         <div class="article-title-column">
-          <p class="loud mono"><mark>Открытый интенсив.</mark> Серия лекций и практик по сборке ценностного предложения для стартапов и продуктовых команд</p>
+          <p class="loud mono"><mark>Открытый интенсив.</mark> Серия лекций и практик по сборке ценностного предложения для стартапов и продуктовых команд</p>
         </div>
         
         
           
         <div class="article-title-column desktop-only">
-          <aside>
-            <!-- <p>
+          <aside class="contour">
+            <p>
               Ещё у нас есть <strong><a href="/ksc">большой курс</a></strong
-              >, это корпоративная трансформа&shy;ционная программа для продук&shy;товых команд и их лидеров
-            </p> -->
+              >, это корпоративная трансформа&shy;ционная программа для лидеров продук&shy;товых команд.
+            </p>
           </aside>
         </div>
       </div>
-      <p class="mobile-only"><em>4 недели в онайне</em></p>
-      <div class="ids__space M"></div>
-      <div id="bad" style="position: absolute; bottom: -1.5em"></div>
+      <div class="ids__space XL mobile-only"></div>
+      <div class="ids__space XL mobile-only"></div>
+      <p class="mobile-only" style="position: relative; z-index: 1;"><em>4 недели в онайне</em></p>
+      <div id="problem" style="position: absolute; bottom: -1.5em"></div>
     </div>
   </div>
   <div class="ids__wrapper L sticky">
@@ -46,7 +54,7 @@
       <div class="title-nav-item">
         <a href="#course">Программа</a>
       </div>
-      <div class="title-nav-item">
+      <div class="title-nav-item desktop-only">
         <a href="#result">Результат</a>
       </div>
       <div class="title-nav-item">
@@ -685,5 +693,6 @@
 </div>
 
 <script src="/assets/form-application.js" defer></script>
+<script type="module" src="/assets/illustrations/init.js"></script>
 
 {% endblock %}

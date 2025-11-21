@@ -4,11 +4,12 @@
   & .article-title {
     position: relative;
     margin: 0 calc(var(--padding) * -1);
-    padding: var(--padding);
-    padding-right: 4em;
+    padding: var(--padding) 4em 1em var(--padding);
+    
     min-height: 21em;
     max-height: 24em;
     background-color: rgba(var(--ids__surface-RGB), 1);
+    overflow: hidden;
 
     @media (width < 768px) {
       margin: 0;
@@ -30,19 +31,37 @@
   }
 
   & .article-title-columns {
+    position: relative;
+    z-index: 1;
     display: flex;
     gap: 1em;
+    justify-content: space-between;
+    height: 10em;
 
+    @media (width < 768px) {
+      flex-direction: column;
+      height: auto;
+    }
 
     & .article-title-column {
       &:nth-child(1) {
-        width: 67%;
-        /* flex-grow: 3; */
+        width: 65%;
+        @media (width < 768px) {
+          width: 100%;
+        }
+        
       }
 
       &:nth-child(2) {
-        width: 33%;
-        /* flex-grow: 1; */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 20%;
+
+        &.desktop-only {
+          display: none;
+        }
+        
       }
 
     }

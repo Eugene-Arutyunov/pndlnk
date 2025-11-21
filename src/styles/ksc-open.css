@@ -1,7 +1,20 @@
 .article-title-illustration {
   position: absolute;
-  top: 1em;
-  width: 32%;
-  right: 1em;
+  top: -1em;
+  width: 40%;
+  min-width: 40%;
+  aspect-ratio: 1/1;
+  right: -1em;
+  
+  @media (width < 768px) {
+    width: 80%;
+    top: auto;
+    bottom: -3em;      
+  }
+}
 
+
+
+.contour {
+  border: 1px solid rgba(var(--ids__text-RGB), 0.2);
 }
