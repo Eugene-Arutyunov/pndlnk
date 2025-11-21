@@ -138,7 +138,8 @@
   }
 
   & mark {
-    color: rgb(var(--ids__text-RGB));
+    color: inherit;
+    
     background-color: rgb(var(--ids__mark-RGB));
   }
 

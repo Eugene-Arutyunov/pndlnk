@@ -58,90 +58,181 @@
         <a href="#result">Результат</a>
       </div>
       <div class="title-nav-item">
-        <a href="#authors">Команда</a>
+        <a href="#pricing">Стоимость</a>
       </div>
       <div class="title-nav-item">
-        <a href="#pricing">Тарифы</a>
+        <a href="#team">Кураторы</a>
       </div>
     </div>
   </div>
 
   <div class="ids__space M"></div>
 
-  <div class="ids__wrapper">
+  <div class="ids__wrapper ksc-narrative">
+    <div class="problem-summary">
+      <div class="problem-summary-container ids__sleepy">
+        <p class="initial-text">А как у вас?</p>
+        <p class="arrow">↙</p>
+        <p class="progress caption" style="display: none;">0 / 3</p>
+        <p class="result-1" style="display: none;">Вам надо!<br><a href="#pricing">Приходите.</a></p>
+        <p class="result-2" style="display: none;">Вы великолепны!</p>        
+        <p class="result-3" style="display: none;">Вам прямо очень надо! <a href="#pricing">Приходите.</a></p>        
+      </div>
+    </div>
+
     <div class="ids__text-width">
-      <p>
+      <p class="intro">
         Сразу к делу, друзья. Это интенсив про то, как создавать ценность <mark>по-другому</mark>. А что значит по-другому? Процессы создания ценности в компаниях устроены
-        по-разному, и зависят от культуры:
+        по-разному, и зависят от культуры.
       </p>
-      <!--
-      <div class="ids__sequence L gap-S">
-        <div class="ids__sequence-item">
-          <p>В компаниях с культурой директивного управления</p>
-        </div>
-        <div class="ids__sequence-item">
-          <p>В компаниях с культурой лидерства</p>
-        </div>
-        <div class="ids__sequence-item">
-          <p>и в компаниях <mark>с системным подходом к ценности.</mark></p>
-        </div>
-      </div>
-      -->
+
       <div class="ids__space S"></div>
+    </div>
 
-      <h3>Организация работы над ценностью</h3>
-      <div class="ids__sequence L gap-S">
-        <div class="ids__sequence-item">
+
+    <h3>Организация работы над ценностью</h3>
+    <div class="culture-radio-group">
+      <label class="culture-radio-option">
+        <input type="radio" name="culture-type" value="control" class="culture-radio-input">
+        <div class="culture-radio-content">
           <p class="caption"><em>Культура контроля</em></p>
-          <p>Изолированные отделы (маркетинг, разработка, продакты), планирование бэклога на годы вперед, долгие согласования и бюрократия.</p>
+          <p>Изолированные отделы (маркетинг, разработка, продакты), планирование бэклога на годы вперед, долгие согласования и бюрократия.</p>
         </div>
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так...</span>
+        </div>
+      </label>
 
-        <div class="ids__sequence-item">
+      <label class="culture-radio-option">
+        <input type="radio" name="culture-type" value="leadership" class="culture-radio-input">
+        <div class="culture-radio-content">
           <p class="caption"><em>Культура лидерства</em></p>
-          <p>Сильные горизонтальные связи, персональная ответственность, внутренние стандарты качества.</p>
+          <p class="width-90">Сильные горизонтальные связи, высокая личная вовлечённость и ответ&shy;ственность за результаты, внутренние стандарты качества.</p>
         </div>
-        <div class="ids__sequence-item">
-          <p class="caption"><em>Культура создания ценности</em></p>
-          <p>Кросс-функциональные команды, <mark>создание ценности поставлено на поток</mark>. Сделать новый продукт для рынка ни для кого не проблема.</p>
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так.</span>
         </div>
-      </div>
-      <div class="ids__space S"></div>
+      </label>
 
-      <h3>Коммуникация с клиентом</h3>
-      <div class="ids__sequence L gap-S">
-        <div class="ids__sequence-item">
+      <label class="culture-radio-option">
+        <input type="radio" name="culture-type" value="value" class="culture-radio-input">
+        <div class="culture-radio-content">
+          <p class="caption"><em>Культура создания ценности</em></p>
+          <p>Над продуктами работают кросс-функциональные команды. <mark>Создание ценности поставлено на поток</mark>, сделать новый продукт для рынка ни для кого не проблема.</p>
+        </div>
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так!</span>
+        </div>
+      </label>
+    </div>
+    <div class="ids__space S"></div>
+
+    <h3>Коммуникация с клиентом</h3>
+    <div class="culture-radio-group">
+      <label class="culture-radio-option">
+        <input type="radio" name="client-communication" value="control" class="culture-radio-input">
+        <div class="culture-radio-content">
           <p class="caption"><em>Культура контроля</em></p>
-          <p>Нет понимания клиента и об этом никто не задумывается. Продажа в основном на языке фич и технологий, агрессивный маркетинг.</p>
+          <p class="width-90">Нет понимания клиента и об этом никто не задумы&shy;вается. Продажа в основном опирается на язык фич и технологий, используется агрессивный маркетинг.</p>
         </div>
-        <div class="ids__sequence-item">
-          <p class="caption"><em>Культура лидерства</em></p>
-          <p>Есть исследования клиентов, есть ответственные за это люди, но из не всегда слушают, потмоу что визионеры ещё не достигли предела своих компетенций.</p>
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так...</span>
         </div>
-        <div class="ids__sequence-item">
-          <p class="caption"><em>Культура создания ценности</em></p>
-          <p>Команда использует специальный язык, который позволяет точно и конкретно говорить с клиентом и внутри команды о том, о чём раньше было сложно даже думать.</p>
-        </div>
-      </div>
-      <div class="ids__space S"></div>
+      </label>
 
-      <h3>Работа с гипотезами</h3>
-      <div class="ids__sequence L gap-S">
-        <div class="ids__sequence-item">
-          <p class="caption"><em>Культура контроля</em></p>
-          <p>«Гипотезами» называются идеи, и зачастую это идеи начальства. «Проверкой гипотез» называется реализация этих идей.</p>
-        </div>
-        <div class="ids__sequence-item">
+      <label class="culture-radio-option">
+        <input type="radio" name="client-communication" value="leadership" class="culture-radio-input">
+        <div class="culture-radio-content">
           <p class="caption"><em>Культура лидерства</em></p>
-          <p>Гипотезы генерируются на основе прошлых количественных данных. Содержание гипотез — всё еще «творчество».</p>
+          <p class="width-90">Есть исследования клиентов, есть ответственные за это люди, но из не всегда слу&shy;шают, потому что визионеры ещё не достигли предела своих компетенций.</p>
         </div>
-        <div class="ids__sequence-item">
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так.</span>
+        </div>
+      </label>
+
+      <label class="culture-radio-option">
+        <input type="radio" name="client-communication" value="value" class="culture-radio-input">
+        <div class="culture-radio-content">
           <p class="caption"><em>Культура создания ценности</em></p>
-          <p>«Гипотезой» называется объяснение реальности. Новые гипотезы выводятся из модели с качественными данными, полученными из проверок прошлых гипотез.</p>
+          <p><mark>Команда использует специаль&shy;ный язык</mark>, который позволяет точно и конкретно говорить с клиентом и внутри команды о том, о чём раньше было сложно даже думать.</p>
         </div>
-      </div>
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так!</span>
+        </div>
+      </label>
+    </div>
+    <div class="ids__space S"></div>
+
+    <h3>Работа с гипотезами</h3>
+    <div class="culture-radio-group">
+      <label class="culture-radio-option">
+        <input type="radio" name="hypotheses-work" value="control" class="culture-radio-input">
+        <div class="culture-radio-content">
+          <p class="caption"><em>Культура контроля</em></p>
+          <p class="width-90">«Гипотезами» называются идеи, и зачастую это идеи начальства. «Проверкой гипотез» называется реали&shy;зация этих идей.</p>
+        </div>
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так...</span>
+        </div>
+      </label>
+
+      <label class="culture-radio-option">
+        <input type="radio" name="hypotheses-work" value="leadership" class="culture-radio-input">
+        <div class="culture-radio-content">
+          <p class="caption"><em>Культура лидерства</em></p>
+          <p class="width-90">Гипотезы генерируются на основе прошлых количест&shy;венных данных. Содержание гипотез — всё еще творчес&shy;тво, требующее мастерства.</p>
+        </div>
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так.</span>
+        </div>
+      </label>
+
+      <label class="culture-radio-option">
+        <input type="radio" name="hypotheses-work" value="value" class="culture-radio-input">
+        <div class="culture-radio-content">
+          <p class="caption"><em>Культура создания ценности</em></p>
+          <p><mark>Гипотезой называется объ&shy;яснение реальности</mark>. Новые гипотезы выводятся из модели с данными, полученными из проверок прошлых гипотез.</p>
+        </div>
+        <div class="culture-radio-footer">
+          <div class="culture-radio-indicator">
+            <span class="culture-radio-dot"></span>
+          </div>
+          <span class="culture-radio-label">У нас так!</span>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div class="ids__space M"></div>
+  <div class="ids__wrapper ksc-narrative">
+    <div class="ids__text-width">
 
       <p>
-        Таким образом, культура создания ценности – это такая организация деятельности, когда работа компании подчинена не продукту (проходили, не работает) и не клиенту (тоже
+        Культура создания ценности — это такая организация деятельности, когда работа компании подчинена не продукту (проходили, не работает) и не клиенту (тоже
         проходили, не работает), а поиску соответствия того, что хочет клиент (и может дать) и того, что может дать компания (и хочет получить).
       </p>
 
@@ -714,10 +805,10 @@
       </ul>
     </div>
   </div>
-  <div class="ids__space XL"></div>
+  <div class="ids__space XL"  id="pricing"></div>
   <div class="ids__wrapper" id="application-form">
     <div class="ids__text-width">
-      <h2 id="pricing">Записаться</h2>
+      <h2>Записаться</h2>
 
       <p>
         Оставьте свои контакеты в форме — мы свяжемся с вами и договоримся на короткий звонок, где расспросим о вашей компании, продукте и текущей ситуации. После этого определим вас в группу и пришлём форму для оплаты.
@@ -759,5 +850,134 @@
 
 <script src="/assets/form-application.js" defer></script>
 <script type="module" src="/assets/illustrations/init.js"></script>
+<script>
+  // Обработка радиогруппы культуры
+  document.addEventListener('DOMContentLoaded', function() {
+    const radioOptions = document.querySelectorAll('.culture-radio-option');
+    const radioInputs = document.querySelectorAll('.culture-radio-input');
+    const summaryContainer = document.querySelector('.problem-summary-container');
+    const progressElement = document.querySelector('.progress');
+    const result1Element = document.querySelector('.result-1');
+    const result2Element = document.querySelector('.result-2');
+    const result3Element = document.querySelector('.result-3');
+    
+    // Имена радиогрупп
+    const radioGroupNames = ['culture-type', 'client-communication', 'hypotheses-work'];
+    
+    // Функция для обновления состояния выбранных опций
+    function updateRadioStates() {
+      radioOptions.forEach(option => {
+        const radioInput = option.querySelector('.culture-radio-input');
+        if (radioInput.checked) {
+          option.classList.add('is-checked');
+        } else {
+          option.classList.remove('is-checked');
+        }
+      });
+    }
+    
+    // Функция для подсчета выбранных групп
+    function getSelectedCount() {
+      let count = 0;
+      radioGroupNames.forEach(groupName => {
+        const selected = document.querySelector(`input[name="${groupName}"]:checked`);
+        if (selected) {
+          count++;
+        }
+      });
+      return count;
+    }
+    
+    // Функция для проверки, все ли выбрали "value"
+    function isAllValueSelected() {
+      return radioGroupNames.every(groupName => {
+        const selected = document.querySelector(`input[name="${groupName}"]:checked`);
+        return selected && selected.value === 'value';
+      });
+    }
+    
+    // Функция для проверки, все ли выбрали "control"
+    function isAllControlSelected() {
+      return radioGroupNames.every(groupName => {
+        const selected = document.querySelector(`input[name="${groupName}"]:checked`);
+        return selected && selected.value === 'control';
+      });
+    }
+    
+    // Функция для обновления UI прогресса и результата
+    function updateProgressUI() {
+      const selectedCount = getSelectedCount();
+      
+      if (selectedCount === 0) {
+        // Изначальное состояние: показываем текст и стрелку
+        summaryContainer.classList.remove('has-selection', 'show-result');
+        if (progressElement) progressElement.style.display = 'none';
+        if (result1Element) result1Element.style.display = 'none';
+        if (result2Element) result2Element.style.display = 'none';
+        if (result3Element) result3Element.style.display = 'none';
+      } else if (selectedCount < 3) {
+        // Показываем прогресс
+        summaryContainer.classList.add('has-selection');
+        summaryContainer.classList.remove('show-result');
+        if (progressElement) {
+          progressElement.textContent = `${selectedCount} / 3`;
+          progressElement.style.display = 'block';
+        }
+        if (result1Element) result1Element.style.display = 'none';
+        if (result2Element) result2Element.style.display = 'none';
+        if (result3Element) result3Element.style.display = 'none';
+      } else {
+        // Все выбрано - показываем результат
+        summaryContainer.classList.add('has-selection', 'show-result');
+        if (progressElement) progressElement.style.display = 'none';
+        
+        if (isAllValueSelected()) {
+          // Результат-2: все выбрали "value"
+          if (result1Element) result1Element.style.display = 'none';
+          if (result2Element) result2Element.style.display = 'block';
+          if (result3Element) result3Element.style.display = 'none';
+        } else if (isAllControlSelected()) {
+          // Результат-3: все выбрали "control"
+          if (result1Element) result1Element.style.display = 'none';
+          if (result2Element) result2Element.style.display = 'none';
+          if (result3Element) result3Element.style.display = 'block';
+        } else {
+          // Результат-1: во всех остальных случаях
+          if (result1Element) result1Element.style.display = 'block';
+          if (result2Element) result2Element.style.display = 'none';
+          if (result3Element) result3Element.style.display = 'none';
+        }
+      }
+    }
+    
+    // Обработка клика по всему блоку
+    radioOptions.forEach(option => {
+      const radioInput = option.querySelector('.culture-radio-input');
+      
+      option.addEventListener('click', function(e) {
+        // Если клик не по самому input, активируем его
+        if (e.target !== radioInput) {
+          radioInput.checked = true;
+          updateRadioStates();
+          updateProgressUI();
+          // Триггерим событие change для совместимости
+          radioInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+    });
+    
+    // Обработка изменений состояния радиокнопок
+    radioInputs.forEach(input => {
+      input.addEventListener('change', function() {
+        updateRadioStates();
+        updateProgressUI();
+      });
+    });
+    
+    // Инициализация начального состояния
+    updateRadioStates();
+    updateProgressUI();
+  });
+</script>
 
 {% endblock %}
