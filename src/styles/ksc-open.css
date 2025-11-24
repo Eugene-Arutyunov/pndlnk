@@ -325,3 +325,37 @@ table.ksc-open-schedule {
     }
   }
 }
+
+
+.shedule-summary {
+  width: 80%;
+  border: 1px solid rgba(var(--ids__text-RGB), 0.2);  
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  font-family: var(--mono);
+  font-size: 0.95em;
+
+  & p {
+    padding: 0.5em;
+    margin-bottom: 0;
+  }
+
+  & ul {
+    margin-bottom: 0;
+    & li {
+      padding: 0.4em 0.6em 0.45em;
+      border-top: 1px solid rgba(var(--ids__text-RGB), 0.2);
+      margin-bottom: 0;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      &:before {
+        content: '';
+        
+      }
+    }
+    
+  }
+}
