@@ -51,8 +51,8 @@
     
 
     @media (width < 768px) {
-      left: 73%;
-      width: 27%;
+      left: 67%;
+      width: 30%;
       font-size: 0.8em;
       background-color: rgba(var(--ids__background-RGB), 1);
       border: 1px solid rgba(var(--ids__accent-RGB), 0.3);  
@@ -283,5 +283,45 @@
     opacity: 0;
     transition: opacity 0.5s ease, color 0.5s ease;
     pointer-events: none;
+  }
+}
+
+
+table.ksc-open-schedule {
+  font-family: var(--mono);
+
+  & h3 {
+    font-size: 1.7em;
+    margin-bottom: 0.3em;
+  }
+  & h4 {
+    font-size: 1em;
+    margin-bottom: 0.8em;
+    
+  }
+
+  & p {
+    margin-bottom: 0.8em;
+  }
+
+  & tr {
+    & td {
+      padding: 0.3em 0 0.15em;
+
+      &:first-child {
+        width: 15%;
+
+        & p {          
+          display: inline-block;
+          font-size: 0.7em;
+          border: 1px solid rgba(var(--ids__text-RGB), 0.2);
+          padding: 0.2em 0.5em 0.15em;
+          border-radius: 0.3em;
+        }
+      }
+      &:last-child {
+        width: 70%;
+      }
+    }
   }
 }

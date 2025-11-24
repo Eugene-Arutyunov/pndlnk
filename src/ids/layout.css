@@ -143,6 +143,10 @@
     @media (width < 768px) {
       --columns: 2;
     }
+
+    & aside {
+      height: 100%;
+    }
   }
 
   &.XL {

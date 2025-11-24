@@ -105,7 +105,9 @@
 }
 
 .author {
-  .author-portrait {
+  margin-bottom: 1em;
+  
+  & .author-portrait {
     position: relative;
     margin-bottom: 0.3em;
 
