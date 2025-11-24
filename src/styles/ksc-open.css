@@ -359,3 +359,28 @@ table.ksc-open-schedule {
     
   }
 }
+
+
+.deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  --gap: 0.5em;
+  --columns: 4;
+  gap: var(--gap);
+  margin-bottom: 1em;
+
+  & .deliverables-item {
+    width: calc((100% - var(--gap) * (var(--columns) - 1)) / var(--columns));
+    @media (width < 768px) {
+      --columns: 1;
+    }
+
+    &.accent {
+      --columns: 2;
+    }
+
+    & aside {
+      height: 100%;
+    }
+  }
+}
