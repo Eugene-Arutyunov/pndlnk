@@ -1,6 +1,8 @@
-{% set nav = [ { title: 'ДКЦП', href: '/dkcp/' }, { title: 'База', href: '/dkcp-base/' }, { title: 'Чекап', href: '/dkcp-checkup/' }, { title: 'Логика', href: '/cxstrategy/' }, {
-title: 'КСЦ', href: '/ksc/' }, { title: '+ОИ', href: '/ksc-open/' },  { title: 'Мы', href: '/about/' }, { title: 'Среда', href: '/sreda' }
+{% set nav = [ { title: 'ДКЦП', href: '/dkcp/' }, { title: 'База', href: '/dkcp-base/' }, { title: 'Чекап ↗', href: 'https://ponedelnik.ru/checkup' }, { title: 'Логика ↗', href: 'https://www.cxstrategy.ru/' }, {
+title: 'КСЦ ↗', href: 'https://ponedelnik.ru/ksc' }, { title: '+ОИ', href: '/ksc-open/' }, { title: 'Блог ↗', href: 'https://blog.buro.cx/' }
 ] %}
+
+ <!-- { title: 'Мы', href: '/about/' }, { title: 'Среда', href: '/sreda' } -->
 
 <header class="header">
   <nav class="nav">
@@ -12,7 +14,7 @@ title: 'КСЦ', href: '/ksc/' }, { title: '+ОИ', href: '/ksc-open/' },  { tit
     {% else %}
     <a href="{{ link.href }}">{{ link.title }}</a>
     {% endif %} {% endfor %}
-    <a href="https://blog.buro.cx/">Блог↗</a>
+
   </nav>
 
   <nav class="nav">

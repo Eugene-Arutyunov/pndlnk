@@ -73,6 +73,10 @@
       display: block;
     }
 
+    & .hint-text {
+      display: block;
+    }
+
     & .arrow {
       display: block;
     }
@@ -88,6 +92,10 @@
     }
 
     &.has-selection {
+      & .hint-text {
+        display: none;
+      }
+
       & .arrow {
         display: none;
       }
@@ -99,6 +107,7 @@
 
     &.show-result {
       & .initial-text,
+      & .hint-text,
       & .arrow,
       & .progress {
         display: none;
@@ -155,15 +164,21 @@
     left: -0.3em;
     right: -0.3em;
     bottom: -0.3em;
-    border: 1px solid transparent;
+    border: 1px solid rgba(var(--ids__text-RGB), 0.1);
     border-radius: 0.6em 0.6em 0.6em 0.9em;
     pointer-events: none;
-    transition: border-color 0s ease;
+    transition: border-color 0.5s ease;
   }
 
   &:has(.culture-radio-input:checked)::before,
   &.is-checked::before {
     border-color: rgba(var(--ids__text-RGB), 0.4);
+    transition: border-color 0s ease;
+  }
+
+  &:not(:has(.culture-radio-input:checked)):not(.is-checked):hover::before {
+    border-color: rgba(var(--ids__hover-RGB), 0.3);
+    transition: border-color 0s ease;
   }
 
   &:has(.culture-radio-input:checked),
