@@ -1,4 +1,13 @@
 // Форма заявок для КСЦ:ОИ
+
+// Тексты сообщений формы (можно редактировать здесь)
+window.FORM_MESSAGES = {
+  sending: "Отправляем...",
+  success: "Отправилось, спасибо! Ответим в течение дня.",
+  error: "Что-то пошло не так! Напишите нам, пожалуйста: okb@ponedelnik.ru",
+  validationError: "Пожалуйста, заполните имя и почту"
+};
+
 function initApplicationForm() {
   const form = document.getElementById("kscApplicationForm");
   if (!form) return;
@@ -66,16 +75,18 @@ function initApplicationForm() {
     });
   });
 
-  function setFormState(state, message = "") {
+  function setFormState(state, message = "", keepFieldErrors = false) {
     // Убираем все состояния с контейнера
     formContainer.classList.remove("status-sending", "status-success", "status-error");
     statusDiv.classList.remove("status-sending", "status-success", "status-error");
     statusDiv.textContent = "";
 
-    // Убираем ошибки с полей
-    fields.forEach((field) => {
-      field.classList.remove("form-field-error");
-    });
+    // Убираем ошибки с полей (если не указано сохранить их)
+    if (!keepFieldErrors) {
+      fields.forEach((field) => {
+        field.classList.remove("form-field-error");
+      });
+    }
 
     switch (state) {
       case "idle":
@@ -88,7 +99,7 @@ function initApplicationForm() {
         inputs.forEach((input) => (input.disabled = true));
         formContainer.classList.add("status-sending");
         statusDiv.classList.add("status-sending");
-        statusDiv.textContent = "Отправка заявки...";
+        statusDiv.textContent = message || window.FORM_MESSAGES.sending;
         break;
 
       case "success":
@@ -99,7 +110,7 @@ function initApplicationForm() {
         });
         formContainer.classList.add("status-success");
         statusDiv.classList.add("status-success");
-        statusDiv.textContent = message || "Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.";
+        statusDiv.textContent = message || window.FORM_MESSAGES.success;
         // Скрываем сообщение через 5 секунд
         setTimeout(() => {
           formContainer.classList.remove("status-success");
@@ -113,7 +124,7 @@ function initApplicationForm() {
         inputs.forEach((input) => (input.disabled = false));
         formContainer.classList.add("status-error");
         statusDiv.classList.add("status-error");
-        statusDiv.textContent = message || "Произошла ошибка при отправке заявки. Пожалуйста, попробуйте ещё раз.";
+        statusDiv.textContent = message || window.FORM_MESSAGES.error;
         break;
     }
   }
@@ -139,7 +150,7 @@ function initApplicationForm() {
     });
 
     if (!isValid) {
-      setFormState("error", "Пожалуйста, заполните все обязательные поля");
+      setFormState("error", window.FORM_MESSAGES.validationError, true);
       return;
     }
 
