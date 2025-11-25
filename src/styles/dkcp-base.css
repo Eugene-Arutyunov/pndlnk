@@ -127,7 +127,14 @@
   & p {
     padding-right: 1em;
 
-    font-size: var(--smaller);
+    
+    &.author-description {
+      font-size: var(--smaller);
+    }
+
+    &.author-quote {
+      
+    }
   }
 }
 

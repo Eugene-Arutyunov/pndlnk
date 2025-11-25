@@ -288,35 +288,60 @@
 
 
 table.ksc-open-schedule {
-  font-family: var(--mono);
+
+  @media (width < 768px) {
+    font-size: 0.9em;
+  }
+  
 
   & h3 {
     font-size: 1.7em;
     margin-bottom: 0.3em;
+
+    @media (width < 768px) {
+      font-size: 1.5em;
+    }
   }
   & h4 {
     font-size: 1em;
-    margin-bottom: 0.8em;
+    margin-bottom: 0.4em;
     
   }
 
   & p {
-    margin-bottom: 0.8em;
+    margin-bottom: 0.4em;
+  }
+
+  ul {
+    li {
+      margin-bottom: 0.4em;
+    }
   }
 
   & tr {
     & td {
-      padding: 0.3em 0 0.15em;
+      padding: 0.4em 0 0.15em;
 
       &:first-child {
         width: 15%;
 
+        @media (width < 768px) {
+          padding-right: 1em;
+        }
+
         & p {          
           display: inline-block;
           font-size: 0.7em;
+          font-family: var(--mono);
           border: 1px solid rgba(var(--ids__text-RGB), 0.2);
           padding: 0.2em 0.5em 0.15em;
           border-radius: 0.3em;
+
+          @media (width < 768px) {
+            font-size: 0.6em;
+          }
+
+          
         }
       }
       &:last-child {
@@ -377,6 +402,10 @@ table.ksc-open-schedule {
 
     &.accent {
       --columns: 2;
+
+      @media (width < 768px) {
+        --columns: 1;
+      }
     }
 
     & aside {
