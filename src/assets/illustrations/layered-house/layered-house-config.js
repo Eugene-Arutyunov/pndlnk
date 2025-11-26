@@ -14,7 +14,7 @@ export function parseLayeredHouseConfig(container) {
     offsetY: -0, // смещение по Y (в пикселях системы 1000x1000)
     accentColor: '--ids__accent-RGB',
     backgroundColor: null, // обязательный параметр
-    lineWidth: 2,
+    lineWidth: 4,
     scale: null, // автоматический расчёт
     // Параметры анимации
     animationAngle: 10, // угол поворота в плоскости слоя (градусы)
