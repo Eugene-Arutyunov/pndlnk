@@ -8,8 +8,6 @@ export class AnimationLoop {
     this.onFrame = onFrame;
     this.animationId = null;
     this.isRunning = false;
-    this.resizeTimeout = null;
-    this.handleResize = this.handleResize.bind(this);
   }
 
   /**
@@ -20,9 +18,6 @@ export class AnimationLoop {
     
     this.isRunning = true;
     this.animate();
-    
-    // Подписываемся на события изменения размера окна
-    window.addEventListener('resize', this.handleResize);
   }
 
   /**
@@ -35,15 +30,6 @@ export class AnimationLoop {
     if (this.animationId !== null) {
       cancelAnimationFrame(this.animationId);
       this.animationId = null;
-    }
-    
-    // Отписываемся от событий
-    window.removeEventListener('resize', this.handleResize);
-    
-    // Очищаем таймер resize
-    if (this.resizeTimeout) {
-      clearTimeout(this.resizeTimeout);
-      this.resizeTimeout = null;
     }
   }
 
@@ -60,23 +46,6 @@ export class AnimationLoop {
     
     // Продолжаем анимацию
     this.animationId = requestAnimationFrame(() => this.animate());
-  }
-
-  /**
-   * Обработчик изменения размера окна (с debounce)
-   */
-  handleResize() {
-    if (this.resizeTimeout) {
-      clearTimeout(this.resizeTimeout);
-    }
-    
-    this.resizeTimeout = setTimeout(() => {
-      // Canvas пересчитается при следующем рендере
-      // Конкретные иллюстрации могут переопределить этот метод
-      if (this.onResize) {
-        this.onResize();
-      }
-    }, 100);
   }
 }
 

@@ -5,7 +5,6 @@
 
 import { BaseRenderer } from '../core/renderer.js';
 import { project3DTo2D } from '../core/geometry3d.js';
-import { lineStates } from './sphere-model.js';
 
 export class SphereRenderer extends BaseRenderer {
   constructor(canvas, container, config) {
@@ -58,10 +57,7 @@ export class SphereRenderer extends BaseRenderer {
     this.ctx.lineWidth = this.config.lineWidth * Math.min(this.scaleX, this.scaleY);
     
     points.forEach(({ point, lineMeta }) => {
-      const projected = project3DTo2D(point, {
-        centerX: 500,
-        centerY: 500
-      });
+      const projected = project3DTo2D(point);
       
       const lengthProgress = lineMeta.lengthProgress || 1.0;
       
@@ -101,10 +97,7 @@ export class SphereRenderer extends BaseRenderer {
     this.ctx.fillStyle = color;
     
     points.forEach(({ point, lineMeta }) => {
-      const projected = project3DTo2D(point, {
-        centerX: 500,
-        centerY: 500
-      });
+      const projected = project3DTo2D(point);
       
       const lengthProgress = lineMeta.lengthProgress || 1.0;
       

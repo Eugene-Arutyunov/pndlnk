@@ -14,7 +14,6 @@ export const lineStates = {
 export class SphereModel {
   constructor(config) {
     this.config = config;
-    this.center = { x: 0, y: 0, z: 0 };
     this.points = [];
     this.originalPoints = [];
     this.rotation = { x: 0, y: 0, z: 0 };
@@ -319,11 +318,9 @@ export class SphereModel {
       lineMetaMap.set(meta.id, meta);
     });
     
-    const activeLineIds = new Set(this.activeLines.map(l => l.id));
     const pointsToRender = [];
     
     this.originalPoints.forEach(originalPoint => {
-      if (!activeLineIds.has(originalPoint.id)) return;
       const lineMeta = lineMetaMap.get(originalPoint.id);
       if (!lineMeta) return;
       
