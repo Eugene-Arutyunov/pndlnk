@@ -673,74 +673,6 @@
   </div>
 
 <div class="ids__space L" id="review"></div>
-<style>
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  @media (max-width: 800px) {
-    .reviews-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .review-item {
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-
-
-  .review-item:last-child {
-    border-bottom: none;
-  }
-
-  .review {
-    display: flex;
-    gap: 1.2rem;
-    align-items: flex-start;
-  }
-
-  .review-portrait {
-    flex: 0 0 auto;
-  }
-
-  .review-portrait img {
-    width: 72px;
-    height: 72px;
-    object-fit: cover;
-    border-radius: var(--ids__radius-M, 0.6rem);
-    display: block;
-  }
-
-  .review-content {
-    flex: 1;
-  }
-
-  .review-name,
-  .author-description {
-    margin: 0 0 0.6rem;
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-
-  .review-text p {
-    margin: 0 0 0.9rem;
-    line-height: 1.55;
-  }
-
-  @media (max-width: 600px) {
-    .review {
-      flex-direction: column;
-    }
-
-    .review-portrait img {
-      width: 60px;
-      height: 60px;
-    }
-  }
-</style>
 
 <div class="ids__wrapper L">
   <div class="ids__text-width">
@@ -749,105 +681,83 @@
 
   <div class="ids__space M"></div>
 
-  <div class="reviews-grid">
+  <div class="ids__sequence XL gap-L">
 
-
-    <!-- Подкаст Бирмана
-    <div class="review-item">
+    <div class="ids__sequence-item">
       <div class="review">
-        <div class="review-portrait">
-          <img src="/assets/ksc-open/Ilya-review.jpg" alt="Илья Бирман" />
-        </div>
-
-        <div class="review-content">
-          <p class="review-name"><strong>Илья Бирман.</strong> Дизайнер, арт‑директор дизайн-бюро Артёма Горбунова, создатель популярной типографской раскладки, разработчик</p>
-          <div class="review-text">
-            <p>Не отзыв, а целый подкаст, где Илья Бирман и Миша Руденко разбирают движок для блогов «Эгея» с помощью методологии ДКЦП.</p>
-            <p>
-              <a href="https://podcasts.apple.com/us/podcast/%D0%B4%D1%83%D0%BC%D0%B0%D0%B5%D0%BC-%D0%B4%D0%B0%D0%BB%D1%8C%D1%88%D0%B5/id1744862171" target="_blank" rel="noopener noreferrer">Эпл</a> ·
-              <a href="https://www.youtube.com/playlist?list=PLl7kvlp_qh0j9uzQGU2ws4DkBWdbjY1_d" target="_blank" rel="noopener noreferrer">Ютюб</a> ·
-              <a href="https://music.yandex.com/album/29069497" target="_blank" rel="noopener noreferrer">Я.Музыка</a> ·
-              <a href="https://thinkon.mave.digital/" target="_blank" rel="noopener noreferrer">Мейв</a>
-            </p>
-
+        <div class="review-author">
+          <div class="review-author-portrait">
+            <img src="/assets/ksc-open/Maksim-review.png" alt="Максим" />
+          </div>
+          <div class="review-name">
+            <strong>Макс Фёдоров.</strong> CMO Whoosh, ментор. Ex. Global CMO Dodo Pizza
           </div>
         </div>
-      </div>
-    </div>
-    -->
 
-    <!-- Отзыв -->
-    <div class="review-item">
-      <div class="review">
-        <div class="review-portrait">
-          <img src="/assets/ksc-open/Maksim-review.png" alt="Максим" />
+        <div class="review-text">
+          <p>«Методология ДКЦП для меня ни много ни мало отправная точка маркетинга — настоящий ценностный маркетинг начинается с этих сложнейших вопросов: кто наш клиент, какую проблему мы решаем и каким образом, благодаря чему? Можно нагенерить тонну булшита отвечая на эти вопросы бессистемно и даже поверить в него, и даже вбухать тонну ресурсов в продукт и продвижение — а в итоге получается какой-то тлен. ДКЦП помогает посмотреть в очень честное зеркало. Для умных и смелых — это начало большого пути.»</p>
         </div>
-
-        <div class="review-content">
-          <p class="review-name">
-            <strong>Макс Фёдоров.</strong> CMO Whoosh, ментор. Ex. Global CMO Dodo Pizza</p>
-
-          <div class="review-text">
-            <p>«Методология ДКЦП для меня ни много ни мало отправная точка маркетинга — настоящий ценностный маркетинг начинается с этих сложнейших вопросов: кто наш клиент, какую проблему мы решаем и каким образом, благодаря чему? Можно нагенерить тонну булшита отвечая на эти вопросы бессистемно и даже поверить в него, и даже вбухать тонну ресурсов в продукт и продвижение — а в итоге получается какой-то тлен. ДКЦП помогает посмотреть в очень честное зеркало. Для умных и смелых — это начало большого пути.»</p>
-          </div>
-        </div>
+        
       </div>
     </div>
 
 
         <!-- Отзыв -->
-    <div class="review-item">
+    <div class="ids__sequence-item">
       <div class="review">
-        <div class="review-portrait">
-          <img src="/assets/ksc-open/Elena-review.jpg" alt="Елена Руденская" />
+        <div class="review-author">
+          <div class="review-author-portrait">
+            <img src="/assets/ksc-open/Elena-review.jpg" alt="Елена Руденская" />
+          </div>
+          <div class="review-name">
+            <strong>Елена Руденская.</strong> Руководитель исследовательского направления, Нейролаборатория Сбера
+          </div>
         </div>
 
-        <div class="review-content">
-          <p class="review-name"><strong>Елена Руденская.</strong> Руководитель исследовательского направления, Нейролаборатория Сбера</p>
-          <div class="review-text">
-            <p>«Рабочие понятные фреймворки, как все интегрировано со всем - люблю такие вещи из серии «теория всего», системность и глубина, живое общение/разборы/ответы на вопросы - мы не бежали, а шли в темпе группы, останавливаясь для обсуждений, состав участников курса - было приятно делать вместе домашки и интересно общаться.»</p>
-          </div>
+        <div class="review-text">
+          <p>«Рабочие понятные фреймворки, как все интегрировано со всем - люблю такие вещи из серии «теория всего», системность и глубина, живое общение/разборы/ответы на вопросы - мы не бежали, а шли в темпе группы, останавливаясь для обсуждений, состав участников курса - было приятно делать вместе домашки и интересно общаться.»</p>
         </div>
       </div>
     </div>
 
     <!-- Отзыв -->
-    <div class="review-item">
+    <div class="ids__sequence-item">
       <div class="review">
-        <div class="review-portrait">
-          <img src="/assets/ksc-open/Artem-review.png" alt="Артём Никшин" />
-        </div>
-
-        <div class="review-content">
-          <p class="author-description">
+        <div class="review-author">
+          <div class="review-author-portrait">
+            <img src="/assets/ksc-open/Artem-review.png" alt="Артём Никшин" />
+          </div>
+          <div class="review-name">
             <strong>Артём Никшин.</strong> Владелец нескольких ИТ-решений и руководитель проекта смарт-платформы PROSTOR в нефтегазовой компании
-          </p>
-
-          <div class="review-text">
-            <p>«ДКЦП помогает не просто красиво сформулировать «миссию продукта», а буквально разложить по полочкам боли, задачи и ожидаемый результат для каждого участника экосистемы. Через призму артефактов ДКЦП я чётко понимаю, где именно в поле потребностей находится моя платформа, какие идеи стоит развивать. Это даёт единый, понятный vision для команды.</p>
-
-            <p>Отдельно ценю в ДКЦП то, что это не «презентационный шаблон», а живой рабочий инструмент. Любой инсайт из продаж, любая обратная связь от клиентов или смежных управлений сразу прогоняется через методологию: мы выносим гипотезу на рабочие группы, сверяем её с картой ценностей и быстро понимаем, усиливает ли она наше ядро предложения или размывает его. Если в эту работу включать команду, люди начинают гораздо лучше чувствовать пользователя и инициативы рождаются уже не «с потолка», а из реальных болей и задач.</p>
-            
-            <p>В итоге ДКЦП для меня — это и способ «раскопать» настоящее ценностное предложение, и удобный язык, на котором можно одинаково уверенно разговаривать и с разработчиками, и с топ-менеджерами, и с отраслевой аудиторией на внешних мероприятиях.»</p>
           </div>
+        </div>
+
+        <div class="review-text">
+          <p>«ДКЦП помогает не просто красиво сформулировать «миссию продукта», а буквально разложить по полочкам боли, задачи и ожидаемый результат для каждого участника экосистемы. Через призму артефактов ДКЦП я чётко понимаю, где именно в поле потребностей находится моя платформа, какие идеи стоит развивать. Это даёт единый, понятный vision для команды.</p>
+
+          <p>Отдельно ценю в ДКЦП то, что это не «презентационный шаблон», а живой рабочий инструмент. Любой инсайт из продаж, любая обратная связь от клиентов или смежных управлений сразу прогоняется через методологию: мы выносим гипотезу на рабочие группы, сверяем её с картой ценностей и быстро понимаем, усиливает ли она наше ядро предложения или размывает его. Если в эту работу включать команду, люди начинают гораздо лучше чувствовать пользователя и инициативы рождаются уже не «с потолка», а из реальных болей и задач.</p>
+          
+          <p>В итоге ДКЦП для меня — это и способ «раскопать» настоящее ценностное предложение, и удобный язык, на котором можно одинаково уверенно разговаривать и с разработчиками, и с топ-менеджерами, и с отраслевой аудиторией на внешних мероприятиях.»</p>
         </div>
       </div>
     </div>
 
 
     <!-- Отзыв -->
-    <div class="review-item">
+    <div class="ids__sequence-item">
       <div class="review">
-        <div class="review-portrait">
-          <img src="/assets/ksc-open/Valentina-Sergeeva-review.jpeg" alt="Валентина Сергеева" />
+        <div class="review-author">
+          <div class="review-author-portrait">
+            <img src="/assets/ksc-open/Valentina-Sergeeva-review.jpeg" alt="Валентина Сергеева" />
+          </div>
+          <div class="review-name">
+            <strong>Валентина Сергеева.</strong> Head of Marketing Research, Flowwow
+          </div>
         </div>
 
-        <div class="review-content">
-          <p class="review-name"><strong>Валентина Сергеева.</strong> Head of Marketing Research, Flowwow</p>
-          <div class="review-text">
-            <p>«Уникальный контент. Тот случай, когда слово «авторский» реально означает сложную работу создателя курса в течение многих лет практики. Видно, что в этом много его личной рефлексии на тему.</p>
-            <p>Также классно, что Михаил всегда честно относится к дискуссии и, если есть спорные новые вопросы, готов вместе поразмышлять на эту тему.»</p>
-          </div>
+        <div class="review-text">
+          <p>«Уникальный контент. Тот случай, когда слово «авторский» реально означает сложную работу создателя курса в течение многих лет практики. Видно, что в этом много его личной рефлексии на тему.</p>
+          <p>Также классно, что Михаил всегда честно относится к дискуссии и, если есть спорные новые вопросы, готов вместе поразмышлять на эту тему.»</p>
         </div>
       </div>
     </div>

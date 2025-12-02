@@ -417,3 +417,19 @@ table.ksc-open-schedule {
 
   }
 }
+
+.review-author {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5em;
+
+  & .review-author-portrait img {
+    width: 3em;
+    height: 3em;
+    object-fit: cover;    
+  }
+  & .review-name {
+    width: 60%;
+    font-size: 0.8rem;
+  }
+}
