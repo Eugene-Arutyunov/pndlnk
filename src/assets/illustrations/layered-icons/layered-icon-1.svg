@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 399.361 330.411">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #ff6a69;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: rgba(230, 228, 228, .72);
+      }
+    </style>
+  </defs>
+  <polygon class="cls-2" points="199.681 .532 .5 72.393 .5 329.911 398.861 329.911 398.861 72.393 199.681 .532"/>
+  <line class="cls-1" x1="392.387" y1="269.528" x2="6.974" y2="269.528"/>
+  <line class="cls-1" x1="6.974" y1="94.81" x2="392.387" y2="94.81"/>
+  <g>
+    <line class="cls-1" x1="160" y1="100.774" x2="160" y2="263.59"/>
+    <line class="cls-1" x1="239.361" y1="100.774" x2="239.361" y2="263.59"/>
+    <line class="cls-1" x1="318.723" y1="100.774" x2="318.723" y2="263.59"/>
+    <line class="cls-1" x1="80.638" y1="100.774" x2="80.638" y2="263.59"/>
+  </g>
+  <g id="Arrow2">
+    <line class="cls-1" x1="100.35" y1="181.005" x2="383.841" y2="139.448"/>
+    <polyline class="cls-1" points="133.693 161.619 100.35 181.005 138.345 190.31"/>
+    <polyline class="cls-1" points="350.498 158.833 383.841 139.448 345.846 130.143"/>
+  </g>
+  <g id="Arrow3">
+    <line class="cls-1" x1="181.902" y1="36.698" x2="223.459" y2="320.189"/>
+    <polyline class="cls-1" points="201.287 70.041 181.902 36.698 172.597 74.694"/>
+    <polyline class="cls-1" points="207.532 292.795 223.459 320.189 231.23 288.456"/>
+  </g>
+  <g id="Arrow1">
+    <line class="cls-1" x1="17.754" y1="237.144" x2="301.245" y2="195.587"/>
+    <polyline class="cls-1" points="51.097 217.759 17.754 237.144 55.749 246.449"/>
+    <polyline class="cls-1" points="267.902 214.973 301.245 195.587 263.25 186.282"/>
+  </g>
+</svg>
