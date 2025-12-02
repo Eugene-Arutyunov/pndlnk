@@ -424,12 +424,50 @@ table.ksc-open-schedule {
   margin-bottom: 0.5em;
 
   & .review-author-portrait img {
-    width: 3em;
-    height: 3em;
+    width: 4em;
+    height: 4em;
     object-fit: cover;    
   }
   & .review-name {
-    width: 60%;
+    width: 70%;
     font-size: 0.8rem;
+  }
+}
+
+
+.logo-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.7em;
+  margin-bottom: 0.5em;
+
+  @media (width < 768px) {
+    gap: 1.2em;
+  }
+
+  & .logo {
+    font-size: 1.5;
+    font-family: var(--mono);
+    font-weight: 500;
+
+    @media (width < 768px) {
+      font-size: 1em;
+    }
+  }
+
+  &.L {
+    @media (width < 768px) {
+      gap: 1.5em;
+    }
+
+    & .logo {
+      font-size: 1.7em;
+      line-height: 0.6;      
+      letter-spacing: -0.02em;
+
+      @media (width < 768px) {
+        font-size: 1.3em;
+      }
+    }
   }
 }
