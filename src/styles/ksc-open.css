@@ -353,35 +353,13 @@ table.ksc-open-schedule {
 
 
 .shedule-summary {
-  width: 80%;
-  border: 1px solid rgba(var(--ids__text-RGB), 0.2);  
-  border-radius: 0.5em;
-  margin-bottom: 1em;
-  font-family: var(--mono);
-  font-size: 0.95em;
 
-  & p {
-    padding: 0.5em;
-    margin-bottom: 0;
-  }
 
   & ul {
-    margin-bottom: 0;
     & li {
-      padding: 0.4em 0.6em 0.45em;
-      border-top: 1px solid rgba(var(--ids__text-RGB), 0.2);
-      margin-bottom: 0;
 
-      &:first-child {
-        border-top: none;
-      }
-
-      &:before {
-        content: '';
-        
-      }
-    }
-    
+      margin-bottom: 0.4em;
+    }  
   }
 }
 
@@ -410,6 +388,86 @@ table.ksc-open-schedule {
 
     & aside {
       height: 100%;
+    }
+  }
+}
+
+.application-columns {
+  display: flex;
+  flex-wrap: wrap;
+  --gap: 1em;
+  gap: var(--gap);
+
+  & .application-column {
+
+    &:first-child {
+      width: calc(60% - (var(--gap) / 2));
+      @media (width < 768px) {
+        width: 100%;
+      }
+    }
+
+    &:last-child {
+      width: calc(40% - (var(--gap) / 2));
+      @media (width < 768px) {
+        width: 100%;
+      }
+    }
+
+
+  }
+}
+
+.review-author {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5em;
+
+  & .review-author-portrait img {
+    width: 4em;
+    height: 4em;
+    object-fit: cover;    
+  }
+  & .review-name {
+    width: 70%;
+    font-size: 0.8rem;
+  }
+}
+
+
+.logo-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.7em;
+  margin-bottom: 0.5em;
+
+  @media (width < 768px) {
+    gap: 1.2em;
+  }
+
+  & .logo {
+    font-size: 1.5;
+    font-family: var(--mono);
+    font-weight: 500;
+
+    @media (width < 768px) {
+      font-size: 1em;
+    }
+  }
+
+  &.L {
+    @media (width < 768px) {
+      gap: 1.5em;
+    }
+
+    & .logo {
+      font-size: 1.7em;
+      line-height: 0.6;      
+      letter-spacing: -0.02em;
+
+      @media (width < 768px) {
+        font-size: 1.3em;
+      }
     }
   }
 }

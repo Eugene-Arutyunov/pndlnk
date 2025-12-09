@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160.5 247.45">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #ff6a69;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: rgba(230, 228, 228, .72);
+      }
+    </style>
+  </defs>
+  <g id="ClientCard">
+    <rect class="cls-2" x=".5" y=".5" width="159.5" height="246.45"/>
+    <line class="cls-1" x1="9.99" y1="100.809" x2="150.285" y2="100.809"/>
+    <line class="cls-1" x1="92.854" y1="92.668" x2="92.854" y2="9.864"/>
+    <line class="cls-1" x1="9.99" y1="133.847" x2="150.285" y2="133.847"/>
+    <line class="cls-1" x1="9.99" y1="166.885" x2="150.285" y2="166.885"/>
+    <g>
+      <path class="cls-1" d="M30.786,28.203c-9.08,16.742,16.589,37.949,31.106,20.384,21.644-26.186-20.553-39.841-31.106-20.384Z"/>
+      <path class="cls-1" d="M74.763,81.428c.515-27.281-55.378-25.736-55.378-1.03"/>
+    </g>
+  </g>
+</svg>

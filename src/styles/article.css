@@ -114,6 +114,11 @@
     top: 0px;
     z-index: 2;
     height: 3em;
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 
     &.stuck {
       width: 100%;
