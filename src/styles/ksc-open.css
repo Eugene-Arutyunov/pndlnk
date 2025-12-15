@@ -5,18 +5,17 @@
   min-width: 40%;
   aspect-ratio: 1/1;
   right: -1em;
-  
+
   @media (width < 768px) {
     width: 80%;
     top: auto;
-    bottom: -3em;      
+    bottom: -3em;
   }
 }
 
 .contour {
   border: 1px solid rgba(var(--ids__text-RGB), 0.2);
 }
-
 
 .problem-summary {
   width: 100%;
@@ -29,15 +28,13 @@
   z-index: 1;
 
   @media (width < 768px) {
-    
   }
-  
-  
+
   & .problem-summary-container {
     position: absolute;
     left: 103%;
     width: 25%;
-    color: rgba(var(--ids__accent-RGB), 1);    
+    color: rgba(var(--ids__accent-RGB), 1);
     --ids__link-RGB: var(--ids__accent-RGB);
     /* background-color: yellow; */
     display: flex;
@@ -47,21 +44,16 @@
     font-family: var(--mono);
     font-weight: 500;
     transition: transform 0.5s ease;
-    
-    
 
     @media (width < 768px) {
       left: 67%;
       width: 30%;
       font-size: 0.8em;
       background-color: rgba(var(--ids__background-RGB), 1);
-      border: 1px solid rgba(var(--ids__accent-RGB), 0.3);  
+      border: 1px solid rgba(var(--ids__accent-RGB), 0.3);
       padding: 0.5em 0.4em 0.2em;
-      border-radius: 0.5em;  
-
+      border-radius: 0.5em;
     }
-
-    
 
     &.is-sleeping {
       opacity: 0;
@@ -122,7 +114,7 @@
   }
 }
 
-.intro {
+.ksc-open-intro {
   @media (width < 768px) {
     width: 70%;
   }
@@ -132,7 +124,7 @@
 .culture-radio-group {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 0.7em;  
+  margin-top: 0.7em;
   margin-bottom: calc(var(--ids__density) * 0.6em);
   --gap: 1em;
   gap: var(--gap);
@@ -158,7 +150,7 @@
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -0.3em;
     left: -0.3em;
@@ -182,11 +174,10 @@
   }
 
   &:has(.culture-radio-input:checked),
-
   &.is-checked {
     & .culture-radio-content {
       color: rgba(var(--ids__text-RGB), 1);
-      transition: color 0s ease;      
+      transition: color 0s ease;
     }
 
     & .culture-radio-indicator {
@@ -246,8 +237,6 @@
         width: 100%;
       }
     }
-
-    
   }
 
   & .culture-radio-footer {
@@ -286,13 +275,10 @@
   }
 }
 
-
 table.ksc-open-schedule {
-
   @media (width < 768px) {
     font-size: 0.9em;
   }
-  
 
   & h3 {
     font-size: 1.7em;
@@ -305,7 +291,6 @@ table.ksc-open-schedule {
   & h4 {
     font-size: 1em;
     margin-bottom: 0.4em;
-    
   }
 
   & p {
@@ -329,7 +314,7 @@ table.ksc-open-schedule {
           padding-right: 1em;
         }
 
-        & p {          
+        & p {
           display: inline-block;
           font-size: 0.7em;
           font-family: var(--mono);
@@ -340,8 +325,6 @@ table.ksc-open-schedule {
           @media (width < 768px) {
             font-size: 0.6em;
           }
-
-          
         }
       }
       &:last-child {
@@ -351,18 +334,13 @@ table.ksc-open-schedule {
   }
 }
 
-
 .shedule-summary {
-
-
   & ul {
     & li {
-
       margin-bottom: 0.4em;
-    }  
+    }
   }
 }
-
 
 .deliverables {
   display: flex;
@@ -399,7 +377,6 @@ table.ksc-open-schedule {
   gap: var(--gap);
 
   & .application-column {
-
     &:first-child {
       width: calc(60% - (var(--gap) / 2));
       @media (width < 768px) {
@@ -413,8 +390,6 @@ table.ksc-open-schedule {
         width: 100%;
       }
     }
-
-
   }
 }
 
@@ -426,14 +401,13 @@ table.ksc-open-schedule {
   & .review-author-portrait img {
     width: 4em;
     height: 4em;
-    object-fit: cover;    
+    object-fit: cover;
   }
   & .review-name {
     width: 70%;
     font-size: 0.8rem;
   }
 }
-
 
 .logo-box {
   display: flex;
@@ -462,7 +436,7 @@ table.ksc-open-schedule {
 
     & .logo {
       font-size: 1.7em;
-      line-height: 0.6;      
+      line-height: 0.6;
       letter-spacing: -0.02em;
 
       @media (width < 768px) {
