@@ -6,14 +6,17 @@
   /* CSS переменные для длительностей (в минутах) */
   --lesson-1-duration: 55;
   --lesson-2-duration: 75;
-  --lesson-3-duration: 45;
+  --lesson-3-duration: 35;
   --lesson-4-duration: 55;
-  --lesson-5-duration: 65;
+  --lesson-5-duration: 45;
   --total-duration: calc(
     var(--lesson-1-duration) + var(--lesson-2-duration) +
       var(--lesson-3-duration) + var(--lesson-4-duration) +
       var(--lesson-5-duration)
   );
+
+  /* Высота бара */
+  --gantt-bar-height: 2.5em;
 
   /* Расчет позиций и ширин */
   --lesson-1-width: calc(
@@ -74,7 +77,7 @@
 .gantt-bar-row {
   display: block;
   position: relative;
-  height: 2.5em;
+  min-height: var(--gantt-bar-height);
   border-top: 1px solid rgba(var(--ids__text-RGB), 0.2);
 
   &:first-child {
@@ -89,7 +92,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  height: var(--gantt-bar-height);
   background-color: rgba(var(--ids__surface-RGB), 1);
   border-radius: 0;
   overflow: hidden;
@@ -176,4 +179,118 @@
   height: 1em;
   display: flex;
   align-items: center;
+}
+
+.gantt-bar-info {
+  margin-top: var(--gantt-bar-height);
+  height: 0.8em;
+  background-color: rgba(var(--ids__text-RGB), 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+
+  &[data-lesson="1"] {
+    margin-left: var(--lesson-1-left);
+    width: var(--lesson-1-width);
+  }
+
+  &[data-lesson="2"] {
+    margin-left: var(--lesson-2-left);
+    width: var(--lesson-2-width);
+  }
+
+  &[data-lesson="3"] {
+    margin-left: var(--lesson-3-left);
+    width: var(--lesson-3-width);
+  }
+
+  &[data-lesson="4"] {
+    margin-left: var(--lesson-4-left);
+    width: var(--lesson-4-width);
+  }
+
+  &[data-lesson="5"] {
+    margin-left: var(--lesson-5-left);
+    width: var(--lesson-5-width);
+  }
+}
+
+.gantt-bar-label {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  color: rgb(var(--ids__inverted-text-RGB));
+  font-size: 0.6em;
+  font-family: var(--mono);
+  padding: 0 0.1em;
+}
+
+.gantt-bar-description {
+  width: 25em;
+  font-size: 0.8em;
+  line-height: 1.1;
+  padding: 0.2em 0 0.5em;
+
+  &[data-lesson="1"] {
+    margin-left: var(--lesson-1-left);
+    width: 35em;
+  }
+
+  &[data-lesson="2"] {
+    margin-left: var(--lesson-2-left);
+    width: 30em;
+  }
+
+  &[data-lesson="3"] {
+    margin-left: var(--lesson-3-left);
+  }
+
+  &[data-lesson="4"] {
+    margin-left: var(--lesson-4-left);
+    width: 20em;
+  }
+
+  &[data-lesson="5"] {
+    margin-left: var(--lesson-5-left);
+    width: 20em;
+  }
+
+  @media (width < 768px) {
+    max-width: 15em;
+    font-size: 0.8em;
+
+    &[data-lesson="1"] {
+      width: calc(100% - var(--lesson-1-left));
+      max-width: 20em;
+    }
+
+    &[data-lesson="2"] {
+      width: calc(100% - var(--lesson-2-left));
+      max-width: 20em;
+    }
+
+    &[data-lesson="3"] {
+      width: calc(100% - var(--lesson-3-left));
+      max-width: 15em;
+    }
+
+    &[data-lesson="4"] {
+      margin-left: auto;
+      margin-right: calc(100% - var(--lesson-4-left) - var(--lesson-4-width));
+      width: auto;
+      max-width: 15em;
+      text-align: right;
+    }
+
+    &[data-lesson="5"] {
+      margin-left: auto;
+      margin-right: calc(100% - var(--lesson-5-left) - var(--lesson-5-width));
+      width: auto;
+      max-width: 20em;
+      text-align: right;
+    }
+  }
 }

@@ -43,16 +43,59 @@
 
   // Обновляем время окончания при инициализации
   updateTimeEnd();
+  
+  // Обновляем текст продолжительности курса при инициализации
+  updateCourseDurationText();
 
   // Получаем общую длительность из CSS переменной для использования в других функциях
   function getTotalDuration() {
     const computedStyle = getComputedStyle(ganttContainer);
-    const lesson1 = parseInt(computedStyle.getPropertyValue('--lesson-1-duration').trim()) || 55;
-    const lesson2 = parseInt(computedStyle.getPropertyValue('--lesson-2-duration').trim()) || 75;
-    const lesson3 = parseInt(computedStyle.getPropertyValue('--lesson-3-duration').trim()) || 35;
-    const lesson4 = parseInt(computedStyle.getPropertyValue('--lesson-4-duration').trim()) || 55;
-    const lesson5 = parseInt(computedStyle.getPropertyValue('--lesson-5-duration').trim()) || 75;
+    const lesson1 = parseInt(computedStyle.getPropertyValue('--lesson-1-duration').trim());
+    const lesson2 = parseInt(computedStyle.getPropertyValue('--lesson-2-duration').trim());
+    const lesson3 = parseInt(computedStyle.getPropertyValue('--lesson-3-duration').trim());
+    const lesson4 = parseInt(computedStyle.getPropertyValue('--lesson-4-duration').trim());
+    const lesson5 = parseInt(computedStyle.getPropertyValue('--lesson-5-duration').trim());
     return lesson1 + lesson2 + lesson3 + lesson4 + lesson5;
+  }
+
+  /**
+   * Форматирует минуты в формат "X часа Y минут" (русский формат)
+   * @param {number} minutes - количество минут
+   * @returns {string} - строка в формате "X часа Y минут"
+   */
+  function formatDurationText(minutes) {
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    
+    let hoursText = '';
+    let minsText = '';
+    
+    if (hours > 0) {
+      hoursText = `${hours} ${hours === 1 ? 'час' : hours < 5 ? 'часа' : 'часов'}`;
+    }
+    
+    if (mins > 0) {
+      minsText = `${mins} ${mins === 1 ? 'минута' : mins < 5 ? 'минуты' : 'минут'}`;
+    }
+    
+    if (hoursText && minsText) {
+      return `${hoursText} ${minsText}`;
+    } else if (hoursText) {
+      return hoursText;
+    } else {
+      return minsText;
+    }
+  }
+
+  /**
+   * Обновляет текст продолжительности курса в описании
+   */
+  function updateCourseDurationText() {
+    const durationTextElement = document.querySelector('.course-duration-text');
+    if (!durationTextElement) return;
+    
+    const totalDuration = getTotalDuration();
+    durationTextElement.textContent = formatDurationText(totalDuration);
   }
 
   const totalDuration = getTotalDuration();
@@ -147,6 +190,29 @@
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     return `${hours}:${mins.toString().padStart(2, '0')}`;
+  }
+
+  /**
+   * Обновляет длительности для всех информационных полосок баров
+   */
+  function updateBarDurations() {
+    const barInfos = ganttContainer.querySelectorAll('.gantt-bar-info');
+    const computedStyle = getComputedStyle(ganttContainer);
+    
+    barInfos.forEach(barInfo => {
+      const lessonNumber = parseInt(barInfo.getAttribute('data-lesson'));
+      const durationElement = barInfo.querySelector('.gantt-bar-duration');
+      
+      if (!durationElement) return;
+      
+      // Получаем длительность урока из CSS переменной
+      const duration = parseInt(computedStyle.getPropertyValue(`--lesson-${lessonNumber}-duration`).trim()) || 0;
+      
+      // Форматируем время
+      const hours = Math.floor(duration / 60);
+      const mins = duration % 60;
+      durationElement.textContent = `${hours}:${mins.toString().padStart(2, '0')}`;
+    });
   }
 
   /**
@@ -301,6 +367,32 @@
   }
 
   /**
+   * Обновляет длительности для всех информационных полосок баров
+   */
+  function updateBarDurations() {
+    const barInfos = ganttContainer.querySelectorAll('.gantt-bar-info');
+    const computedStyle = getComputedStyle(ganttContainer);
+    
+    barInfos.forEach(barInfo => {
+      const lessonNumber = parseInt(barInfo.getAttribute('data-lesson'));
+      const durationElement = barInfo.querySelector('.gantt-bar-duration');
+      
+      if (!durationElement) return;
+      
+      // Получаем длительность урока из CSS переменной
+      const duration = parseInt(computedStyle.getPropertyValue(`--lesson-${lessonNumber}-duration`).trim()) || 0;
+      
+      // Форматируем время
+      const hours = Math.floor(duration / 60);
+      const mins = duration % 60;
+      durationElement.textContent = `${hours}:${mins.toString().padStart(2, '0')}`;
+    });
+  }
+
+  // Обновляем длительности баров при инициализации
+  updateBarDurations();
+
+  /**
    * Обновляет позицию индикатора и превью на основе координат
    * @param {number} clientX - координата X клика/касания
    * @param {number} clientY - координата Y клика/касания
@@ -444,6 +536,12 @@
   function handleResize() {
     // Обновляем время окончания при изменении размера
     updateTimeEnd();
+    
+    // Обновляем текст продолжительности курса при изменении размера
+    updateCourseDurationText();
+    
+    // Обновляем длительности баров при изменении размера
+    updateBarDurations();
     
     // Если есть сохраненная позиция, пересчитываем превью на её основе
     if (lastClientX !== null && lastClientY !== null) {
