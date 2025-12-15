@@ -271,7 +271,7 @@
   margin-bottom: 0.5em;
 
   @media (width < 768px) {
-    --title-grid-cell-size: 4.5em;
+    --title-grid-cell-size: 4.2em;
 
     /* Принудительный перенос строки после 5-го элемента через псевдоэлемент */
     &::after {
