@@ -236,16 +236,17 @@
 
   &[data-lesson="1"] {
     margin-left: var(--lesson-1-left);
-    width: 35em;
+    width: 40em;
   }
 
   &[data-lesson="2"] {
     margin-left: var(--lesson-2-left);
-    width: 30em;
+    width: 39em;
   }
 
   &[data-lesson="3"] {
     margin-left: var(--lesson-3-left);
+    width: 27em;
   }
 
   &[data-lesson="4"] {
