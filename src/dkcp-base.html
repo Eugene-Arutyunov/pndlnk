@@ -284,11 +284,16 @@
   <div class="ids__wrapper">
     <div id="course" class="ids__space L"></div>
     <h2>Программа курса</h2>
-    <p>Коротко, <a href="#">с отзывами</a>.</p>
-
-    <div class="ids__space S"></div>
-    {% include 'dkcp-base/lessons-gantt.html' %}
+    <div class="ids__text-width">
+      <p>
+        Курс состоит из пяти очень компактных, плотно смонтированных лекций
+        общей продолжительностью 4 часа 55 минут (это не точно, записали только
+        три). В режиме «у меня супермозг, я в отличной форме» их можно
+        посмотреть за 3 часа.
+      </p>
+    </div>
   </div>
+  <div class="ids__wrapper">{% include 'dkcp-base/lessons-gantt.html' %}</div>
   <div id="authors" class="ids__wrapper L">
     <div class="ids__space L"></div>
     <h2>Авторы</h2>

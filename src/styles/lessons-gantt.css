@@ -1,14 +1,14 @@
 .lessons-gantt {
   position: relative;
   width: 100%;
-  margin: 2em 0;
+  margin: 1em 0;
 
   /* CSS переменные для длительностей (в минутах) */
   --lesson-1-duration: 55;
   --lesson-2-duration: 75;
-  --lesson-3-duration: 35;
+  --lesson-3-duration: 45;
   --lesson-4-duration: 55;
-  --lesson-5-duration: 75;
+  --lesson-5-duration: 65;
   --total-duration: calc(
     var(--lesson-1-duration) + var(--lesson-2-duration) +
       var(--lesson-3-duration) + var(--lesson-4-duration) +
@@ -74,7 +74,7 @@
 .gantt-bar-row {
   display: block;
   position: relative;
-  height: 3em;
+  height: 2.5em;
   border-top: 1px solid rgba(var(--ids__text-RGB), 0.2);
 
   &:first-child {
@@ -120,8 +120,31 @@
   }
 
   & .gantt-bar-content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
     width: 100%;
     height: 100%;
+  }
+
+  & .gantt-preview-speaker-1,
+  & .gantt-preview-speaker-2 {
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    flex-shrink: 0;
+  }
+
+  & .gantt-preview-slide {
+    height: 100%;
+    aspect-ratio: 43 / 30;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    flex-shrink: 0;
   }
 }
 

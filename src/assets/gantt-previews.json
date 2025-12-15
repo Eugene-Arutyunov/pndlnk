@@ -1,0 +1,55 @@
+{
+  "interval": 60,
+  "frame": {
+    "width": 480,
+    "height": 270
+  },
+  "columns": 10,
+  "videos": [
+    {
+      "frames": 55,
+      "rows": 6,
+      "sprite": {
+        "url": "/assets/dkcp-base/preview1.webp",
+        "width": 4800,
+        "height": 1620
+      }
+    },
+    {
+      "frames": 75,
+      "rows": 8,
+      "sprite": {
+        "url": "/assets/dkcp-base/preview2.webp",
+        "width": 4800,
+        "height": 2160
+      }
+    },
+    {
+      "frames": 35,
+      "rows": 4,
+      "sprite": {
+        "url": "/assets/dkcp-base/preview3.webp",
+        "width": 4800,
+        "height": 1080
+      }
+    },
+    {
+      "frames": null,
+      "rows": null,
+      "sprite": {
+        "url": "/assets/dkcp-base/preview4.webp",
+        "width": 4800,
+        "height": null
+      }
+    },
+    {
+      "frames": null,
+      "rows": null,
+      "sprite": {
+        "url": "/assets/dkcp-base/preview5.webp",
+        "width": 4800,
+        "height": null
+      }
+    }
+  ]
+}
