@@ -1,0 +1,156 @@
+.lessons-gantt {
+  position: relative;
+  width: 100%;
+  margin: 2em 0;
+
+  /* CSS переменные для длительностей (в минутах) */
+  --lesson-1-duration: 55;
+  --lesson-2-duration: 75;
+  --lesson-3-duration: 35;
+  --lesson-4-duration: 55;
+  --lesson-5-duration: 75;
+  --total-duration: calc(
+    var(--lesson-1-duration) + var(--lesson-2-duration) +
+      var(--lesson-3-duration) + var(--lesson-4-duration) +
+      var(--lesson-5-duration)
+  );
+
+  /* Расчет позиций и ширин */
+  --lesson-1-width: calc(
+    var(--lesson-1-duration) / var(--total-duration) * 100%
+  );
+  --lesson-1-left: 0%;
+
+  --lesson-2-width: calc(
+    var(--lesson-2-duration) / var(--total-duration) * 100%
+  );
+  --lesson-2-left: calc(
+    var(--lesson-1-duration) / var(--total-duration) * 100%
+  );
+
+  --lesson-3-width: calc(
+    var(--lesson-3-duration) / var(--total-duration) * 100%
+  );
+  --lesson-3-left: calc(
+    (var(--lesson-1-duration) + var(--lesson-2-duration)) /
+      var(--total-duration) * 100%
+  );
+
+  --lesson-4-width: calc(
+    var(--lesson-4-duration) / var(--total-duration) * 100%
+  );
+  --lesson-4-left: calc(
+    (
+        var(--lesson-1-duration) + var(--lesson-2-duration) +
+          var(--lesson-3-duration)
+      ) / var(--total-duration) * 100%
+  );
+
+  --lesson-5-width: calc(
+    var(--lesson-5-duration) / var(--total-duration) * 100%
+  );
+  --lesson-5-left: calc(
+    (
+        var(--lesson-1-duration) + var(--lesson-2-duration) +
+          var(--lesson-3-duration) + var(--lesson-4-duration)
+      ) / var(--total-duration) * 100%
+  );
+}
+
+.gantt-timeline {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.1em;
+  font-family: var(--mono);
+  font-size: 0.7em;
+  color: rgba(var(--ids__text-RGB), 0.8);
+}
+
+.gantt-bars {
+  position: relative;
+  width: 100%;
+}
+
+.gantt-bar-row {
+  display: block;
+  position: relative;
+  height: 3em;
+  border-top: 1px solid rgba(var(--ids__text-RGB), 0.2);
+
+  &:first-child {
+    border-top-color: rgba(var(--ids__text-RGB), 0.5);
+  }
+  &:last-child {
+    border-bottom: 1px solid rgba(var(--ids__text-RGB), 0.2);
+  }
+}
+
+.gantt-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(var(--ids__surface-RGB), 1);
+  border-radius: 0;
+  overflow: hidden;
+
+  &[data-lesson="1"] {
+    left: var(--lesson-1-left);
+    width: var(--lesson-1-width);
+  }
+
+  &[data-lesson="2"] {
+    left: var(--lesson-2-left);
+    width: var(--lesson-2-width);
+  }
+
+  &[data-lesson="3"] {
+    left: var(--lesson-3-left);
+    width: var(--lesson-3-width);
+  }
+
+  &[data-lesson="4"] {
+    left: var(--lesson-4-left);
+    width: var(--lesson-4-width);
+  }
+
+  &[data-lesson="5"] {
+    left: var(--lesson-5-left);
+    width: var(--lesson-5-width);
+  }
+
+  & .gantt-bar-content {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.gantt-hover-indicator {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  /* Высота: от верха timeline до низа последнего бара */
+  height: calc(100%);
+  background-color: rgb(var(--ids__hover-RGB));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  /* left управляется через JavaScript, без CSS transition */
+  z-index: 10;
+}
+
+.gantt-hover-time {
+  position: absolute;
+  top: 0.1em;
+  left: 0.1em;
+  font-family: var(--mono);
+  font-size: 0.7em;
+  color: rgb(var(--ids__hover-RGB));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  white-space: nowrap;
+  height: 1em;
+  display: flex;
+  align-items: center;
+}
