@@ -129,9 +129,6 @@
     &.author-description {
       font-size: var(--smaller);
     }
-
-    &.author-quote {
-    }
   }
 }
 
@@ -253,4 +250,123 @@
   font-family: var(--mono);
   font-size: 0.6em;
   border: 1px dashed rgba(var(--ids__text-RGB), 0.5);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.title-grid {
+  --title-grid-cell-size: 5.5em;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.5em;
+
+  @media (width < 768px) {
+    --title-grid-cell-size: 4.5em;
+
+    /* Принудительный перенос строки после 5-го элемента через псевдоэлемент */
+    &::after {
+      content: "";
+      width: 100%;
+      order: 6;
+      height: 0;
+      flex-basis: 100%;
+    }
+  }
+
+  & .title-grid-cell {
+    height: var(--title-grid-cell-size);
+    border: 1px solid rgba(var(--ids__text-RGB), 0.5);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 0.1em;
+
+    &:not(.title-grid-cell-empty) {
+      width: var(--title-grid-cell-size);
+    }
+
+    &.title-grid-cell-empty {
+      width: calc(var(--title-grid-cell-size) / 2);
+    }
+
+    & span {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: calc(1em * 3);
+      line-height: 1;
+    }
+
+    /* Desktop: убрать border-left у всех, затем установить первому контейнеру */
+    /* h1 - nth-child(1), поэтому первый title-grid-cell - nth-child(2) */
+    border-left: none;
+
+    &:nth-child(2) {
+      border-left: 1px solid rgba(var(--ids__text-RGB), 0.5);
+    }
+
+    @media (width < 768px) {
+      border-left: none;
+
+      /* Правильный порядок для мобилы: Б А З А [пустой] [пустой-последний] Д К Ц П */
+      /* h1 - nth-child(1), поэтому title-grid-cell начинаются с nth-child(2) */
+      &:nth-child(2) {
+        order: 1;
+        border-left: 1px solid rgba(var(--ids__text-RGB), 0.5);
+      }
+
+      &:nth-child(3) {
+        order: 2;
+      }
+
+      &:nth-child(4) {
+        order: 3;
+      }
+
+      &:nth-child(5) {
+        order: 4;
+      }
+
+      &:nth-child(6) {
+        order: 5;
+      }
+
+      &:nth-child(7) {
+        order: 8;
+        border-top: none;
+      }
+
+      &:nth-child(8) {
+        order: 9;
+        border-top: none;
+      }
+
+      &:nth-child(9) {
+        order: 10;
+        border-top: none;
+      }
+
+      &:nth-child(10) {
+        order: 11;
+        border-top: none;
+      }
+
+      /* Второй пустой контейнер перескакивает в начало второй строки */
+      &.title-grid-cell-empty-last {
+        order: 7;
+        border-left: 1px solid rgba(var(--ids__text-RGB), 0.5);
+        border-top: none;
+      }
+    }
+  }
 }
