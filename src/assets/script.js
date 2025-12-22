@@ -68,13 +68,66 @@ function initSleepyObserver() {
   });
 }
 
+function initLogoDownloads() {
+  const downloadPlates = document.querySelectorAll(".download-plate");
+
+  if (downloadPlates.length === 0) return;
+
+  downloadPlates.forEach((plate) => {
+    const downloadMenu = plate.querySelector(".download-menu");
+
+    // Обработка ховера
+    plate.addEventListener("mouseenter", () => {
+      plate.classList.add("hover");
+    });
+
+    plate.addEventListener("mouseleave", () => {
+      plate.classList.remove("hover");
+      if (downloadMenu) {
+        downloadMenu.classList.remove("visible");
+      }
+    });
+
+    // Обработка клика для показа/скрытия меню
+    plate.addEventListener("click", (e) => {
+      // Предотвращаем закрытие меню при клике на ссылки внутри меню
+      if (e.target.closest(".download-menu-plate")) {
+        return;
+      }
+
+      if (downloadMenu) {
+        // Закрываем все остальные меню
+        document.querySelectorAll(".download-menu.visible").forEach((menu) => {
+          if (menu !== downloadMenu) {
+            menu.classList.remove("visible");
+          }
+        });
+
+        // Переключаем текущее меню
+        downloadMenu.classList.toggle("visible");
+      }
+    });
+  });
+
+  // Закрытие меню при клике вне его
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".download-plate")) {
+      document.querySelectorAll(".download-menu.visible").forEach((menu) => {
+        menu.classList.remove("visible");
+      });
+    }
+  });
+}
+
 // Инициализируем когда DOM готов
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     initStickyObserver();
     initSleepyObserver();
+    initLogoDownloads();
   });
 } else {
   initStickyObserver();
   initSleepyObserver();
+  initLogoDownloads();
 }
