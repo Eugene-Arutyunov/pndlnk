@@ -1,0 +1,40 @@
+.dkcp-author-card {
+  display: flex;
+  gap: 0.5em;
+  align-items: flex-start;
+  max-width: 45em;
+}
+
+.dkcp-author-portrait img {
+  width: 6.25em;
+  height: 6.25em;
+  object-fit: cover;
+}
+
+.dkcp-author-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.dkcp-author-description {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+.dkcp-author-quote {
+  margin: 0;
+  font-size: 0.9375em;
+  line-height: 1.5;
+}
+
+.event img {
+  display: block;
+  margin-bottom: 0.875em;
+}
+
+.divider {
+  border-bottom: 0.125em solid #e5e5e5;
+  margin: 1.875em 0;
+}

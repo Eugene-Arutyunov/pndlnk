@@ -36,7 +36,6 @@
       &.serif {
         font-size: 1.44em;
         line-height: 1.2;
-
       }
 
       &.mono {
@@ -47,15 +46,11 @@
           font-size: 1.05em;
         }
       }
-
-
-
     }
 
     &.caption {
       font-size: 0.8em;
     }
-
   }
 
   & h1,
@@ -69,16 +64,14 @@
   }
 
   & h1 {
-    font-size: 4em;
+    font-size: 3.5em;
     font-weight: 500;
     line-height: calc(var(--ids__density) / 1.3);
-    margin-bottom: 0.2em;
+    margin-bottom: 0.4em;
     margin-left: -0.04em;
-
 
     &.L {
       font-size: 4em;
-
 
       @media (width < 768px) {
         font-size: 2.4em;
@@ -103,8 +96,6 @@
     @media (width < 768px) {
       font-size: 2.5em;
     }
-
-
   }
 
   & h3 {
@@ -112,8 +103,6 @@
     line-height: 1.08;
     font-weight: 550;
     margin-bottom: 0.4em;
-
-    
   }
 
   & h4 {
@@ -145,7 +134,7 @@
 
   & mark {
     color: inherit;
-    
+
     background-color: rgb(var(--ids__mark-RGB));
   }
 
@@ -183,7 +172,6 @@
     margin-top: 1em;
 
     & li {
-
       display: inline-block;
       padding: 0.3em 0.5em 0.2em;
       border: 2px solid rgba(var(--ids__text-RGB), 1);
@@ -196,18 +184,14 @@
     }
 
     &.S {
-
       font-size: 0.8em;
-      
     }
-
   }
 
   & em {
     font-family: var(--serif);
     font-size: 1.05em;
     line-height: 1;
-
   }
 
   & blockquote {
@@ -303,8 +287,6 @@
         padding: 0.8em 0.5em 1em 0;
         border-bottom: 1px solid rgba(var(--ids__text-RGB), 0.5);
         vertical-align: top;
-
-
       }
 
       &:last-child {
@@ -336,6 +318,4 @@
       color: white;
     }
   }
-
-
 }
