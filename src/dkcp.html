@@ -4,6 +4,23 @@
   <h1>
     ДКЦП — инструмент, который помогает компаниям понять, что и кому они продают
   </h1>
+  <div class="dkcp-splash-container">
+    <div
+      class="illustration-container illustration-container-back"
+      data-illustration-type="splash"
+      data-background-color="--ids__background-RGB"
+      data-canvas-layer="back">
+      <canvas class="illustration-canvas"></canvas>
+    </div>
+    <div
+      class="illustration-container illustration-container-front"
+      data-illustration-type="splash"
+      data-background-color="--ids__background-RGB"
+      data-canvas-layer="front">
+      <canvas class="illustration-canvas"></canvas>
+    </div>
+  </div>
+
   <div class="ids__text-width">
     <p>
       А разве бывают компании, которые не понимают, что продают? Как ни странно,
@@ -711,5 +728,7 @@
     </div>
   </div>
 </div>
+
+<script type="module" src="/assets/illustrations/init.js"></script>
 
 {% endblock %}

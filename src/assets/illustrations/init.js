@@ -4,11 +4,13 @@
 
 import { SphereIllustration } from './sphere/sphere.js';
 import { LayeredHouseIllustration } from './layered-house/layered-house.js';
+import { SplashIllustration } from './splash/splash.js';
 
 // Реестр типов иллюстраций
 const illustrationTypes = {
   sphere: SphereIllustration,
-  'layered-house': LayeredHouseIllustration
+  'layered-house': LayeredHouseIllustration,
+  splash: SplashIllustration
 };
 
 // Хранилище экземпляров иллюстраций
@@ -19,14 +21,39 @@ const instances = new Map();
  */
 export function initIllustrations() {
   const containers = document.querySelectorAll('.illustration-container');
+  const processedContainers = new Set();
   
   containers.forEach((container, index) => {
+    // Пропускаем контейнеры, которые уже обработаны как часть пары
+    if (processedContainers.has(container)) {
+      return;
+    }
+    
     // Определяем тип иллюстрации
     const type = container.dataset.illustrationType || 'sphere';
     
     if (!illustrationTypes[type]) {
       console.warn(`Unknown illustration type: ${type}`);
       return;
+    }
+    
+    // Проверяем, является ли это контейнером с двумя слоями
+    const canvasLayer = container.dataset.canvasLayer;
+    const parentContainer = container.closest('.dkcp-splash-container');
+    
+    if (canvasLayer && parentContainer) {
+      // Находим второй контейнер в паре
+      const otherLayer = canvasLayer === 'back' ? 'front' : 'back';
+      const otherContainer = parentContainer.querySelector(`[data-canvas-layer="${otherLayer}"]`);
+      
+      if (otherContainer) {
+        // Помечаем оба контейнера как обработанные
+        processedContainers.add(container);
+        processedContainers.add(otherContainer);
+      }
+    } else {
+      // Обычный контейнер
+      processedContainers.add(container);
     }
     
     try {
@@ -37,6 +64,15 @@ export function initIllustrations() {
       const id = `illustration-${index}`;
       instances.set(id, instance);
       container.dataset.illustrationId = id;
+      
+      // Если это dual canvas режим, сохраняем ID и для второго контейнера
+      if (canvasLayer && parentContainer) {
+        const otherLayer = canvasLayer === 'back' ? 'front' : 'back';
+        const otherContainer = parentContainer.querySelector(`[data-canvas-layer="${otherLayer}"]`);
+        if (otherContainer) {
+          otherContainer.dataset.illustrationId = id;
+        }
+      }
       
       // Запускаем анимацию
       const startIllustration = () => {
@@ -86,5 +122,5 @@ if (document.readyState === 'loading') {
 }
 
 // Экспортируем для ручного управления
-export { SphereIllustration, LayeredHouseIllustration };
+export { SphereIllustration, LayeredHouseIllustration, SplashIllustration };
 

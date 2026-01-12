@@ -11,7 +11,9 @@
 Универсальные модули, используемые всеми типами иллюстраций:
 
 #### `geometry3d.js`
+
 Функции для работы с 3D геометрией:
+
 - `rotateX(point, angle)` — вращение точки вокруг оси X
 - `rotateY(point, angle)` — вращение точки вокруг оси Y
 - `rotateZ(point, angle)` — вращение точки вокруг оси Z
@@ -19,7 +21,9 @@
 - `project3DTo2D(point3D, options)` — проекция 3D точки в 2D пространство
 
 #### `renderer.js`
+
 Базовый класс `BaseRenderer` для работы с Canvas:
+
 - Настройка Canvas с учетом `devicePixelRatio`
 - Масштабирование под размер контейнера
 - Извлечение цветов из CSS-переменных
@@ -27,7 +31,9 @@
 - Методы `scaleCoordinateX()` и `scaleCoordinateY()` для масштабирования координат
 
 #### `animation.js`
+
 Класс `AnimationLoop` для управления анимационным циклом:
+
 - Управление `requestAnimationFrame`
 - Обработка событий изменения размера окна
 - Методы `start()` и `stop()` для управления анимацией
@@ -51,7 +57,9 @@ sphere/
 ### Компоненты
 
 #### `sphere-model.js`
+
 Класс `SphereModel`:
+
 - Генерация точек на сфере (равномерное распределение через золотой угол)
 - Генерация случайных точек для динамического добавления
 - Управление жизненным циклом линий (APPEARING → ACTIVE → DISAPPEARING)
@@ -59,13 +67,17 @@ sphere/
 - Автоматическое добавление/удаление линий в заданных пределах
 
 #### `sphere-renderer.js`
+
 Класс `SphereRenderer` extends `BaseRenderer`:
+
 - Отрисовка линий с учетом состояния и перспективы
 - Отрисовка точек (кругов) с динамическим радиусом и opacity
 - Эффект глубины на основе Z-координаты
 
 #### `sphere-config.js`
+
 Функция `parseSphereConfig(container)` — парсинг data-атрибутов:
+
 - `data-radius` — радиус сферы (по умолчанию: 400)
 - `data-num-points` — начальное количество точек (по умолчанию: 45)
 - `data-rotation-speed-x/y/z` — скорость вращения по осям (по умолчанию: 0.002, 0.003, 0.001)
@@ -76,7 +88,9 @@ sphere/
 - `data-accent-color` — CSS-переменная для цвета акцента (по умолчанию: `--ids__accent-RGB`)
 
 #### `sphere.js`
+
 Класс `SphereIllustration`:
+
 - Связывает модель, рендерер и анимацию
 - Методы `start()` и `stop()` для управления
 - Методы `getModel()` и `getRenderer()` для внешнего доступа
@@ -94,11 +108,87 @@ sphere/
 С кастомизацией через data-атрибуты:
 
 ```html
-<div class="illustration-container" 
-     data-illustration-type="sphere"
-     data-line-width="3"
-     data-rotation-speed-x="0.001"
-     data-accent-color="--ids__accent-RGB">
+<div
+  class="illustration-container"
+  data-illustration-type="sphere"
+  data-line-width="3"
+  data-rotation-speed-x="0.001"
+  data-accent-color="--ids__accent-RGB">
+  <canvas class="illustration-canvas"></canvas>
+</div>
+```
+
+## Иллюстрация: Splash (`splash`)
+
+Третья реализованная иллюстрация — векторное изображение домика из 10 объектов, каждый с разной z-координатой, с циклическим вращением по осям X и Y.
+
+### Компоненты
+
+#### `splash-model.js`
+
+Класс `SplashModel`:
+
+- Парсинг SVG файла (`Artboard 38.svg`) с извлечением всех элементов (rect и polygon)
+- Создание массива из 10 объектов, каждый с уникальной z-координатой
+- Равномерное распределение z-координат с шагом 50 (от -225 до +225)
+- Вращение только по осям X и Y (без Z)
+- Применение 3D трансформаций и проекции к точкам объектов
+
+#### `splash-renderer.js`
+
+Класс `SplashRenderer` extends `BaseRenderer`:
+
+- Отрисовка объектов с полупрозрачной заливкой и красной обводкой
+- Сортировка объектов по z-координате для правильного порядка отрисовки
+- Без эффектов глубины (одинаковый opacity и размер для всех объектов)
+
+#### `splash-config.js`
+
+Функция `parseSplashConfig(container)` — парсинг data-атрибутов:
+
+- `data-rotation-speed-x` / `data-rotation-speed-y` — скорости вращения по осям (по умолчанию: 0.002, 0.003)
+- `data-z-spacing` — шаг между объектами по z-оси (по умолчанию: 50)
+- `data-accent-color` — CSS-переменная для цвета акцента (по умолчанию: `--ids__accent-RGB`)
+- `data-background-color` — CSS-переменная для цвета фона (обязательный)
+- `data-line-width` — толщина обводки (по умолчанию: 4)
+- `data-offset-x` / `data-offset-y` — смещение (по умолчанию: 0)
+- `data-scale` — масштаб (по умолчанию: автоматический расчёт)
+
+#### `splash.js`
+
+Класс `SplashIllustration`:
+
+- Загрузка SVG файла асинхронно
+- Связывает модель, рендерер и анимацию
+- Методы `start()` и `stop()` для управления
+- Методы `getModel()` и `getRenderer()` для внешнего доступа
+- ResizeObserver для отслеживания изменений размера контейнера
+
+### Использование
+
+```html
+<div
+  class="illustration-container"
+  data-illustration-type="splash"
+  data-background-color="--ids__background-RGB">
+  <canvas class="illustration-canvas"></canvas>
+</div>
+
+<script type="module" src="/assets/illustrations/init.js"></script>
+```
+
+С кастомизацией через data-атрибуты:
+
+```html
+<div
+  class="illustration-container"
+  data-illustration-type="splash"
+  data-background-color="--ids__background-RGB"
+  data-rotation-speed-x="0.001"
+  data-rotation-speed-y="0.002"
+  data-z-spacing="60"
+  data-line-width="3"
+  data-accent-color="--ids__accent-RGB">
   <canvas class="illustration-canvas"></canvas>
 </div>
 ```
@@ -108,6 +198,7 @@ sphere/
 ### Шаг 1: Создать структуру папок
 
 Создайте папку для новой иллюстрации:
+
 ```
 src/assets/illustrations/[name]/
 ```
@@ -117,7 +208,7 @@ src/assets/illustrations/[name]/
 Модель отвечает за данные и логику конкретной иллюстрации:
 
 ```javascript
-import { rotatePoint } from '../core/geometry3d.js';
+import { rotatePoint } from "../core/geometry3d.js";
 
 export class MyModel {
   constructor(config) {
@@ -145,8 +236,8 @@ export class MyModel {
 Рендерер расширяет `BaseRenderer` и реализует специфичную отрисовку:
 
 ```javascript
-import { BaseRenderer } from '../core/renderer.js';
-import { project3DTo2D } from '../core/geometry3d.js';
+import { BaseRenderer } from "../core/renderer.js";
+import { project3DTo2D } from "../core/geometry3d.js";
 
 export class MyRenderer extends BaseRenderer {
   constructor(canvas, container, config) {
@@ -158,7 +249,7 @@ export class MyRenderer extends BaseRenderer {
     this.setupCanvas();
     const points = model.getPointsForRender();
     const sortedPoints = this.sortByDepth(points);
-    
+
     this.clear();
     // Ваша логика отрисовки
   }
@@ -191,21 +282,21 @@ export function parseMyConfig(container) {
 Связывает все компоненты:
 
 ```javascript
-import { AnimationLoop } from '../core/animation.js';
-import { MyModel } from './my-model.js';
-import { MyRenderer } from './my-renderer.js';
-import { parseMyConfig } from './my-config.js';
+import { AnimationLoop } from "../core/animation.js";
+import { MyModel } from "./my-model.js";
+import { MyRenderer } from "./my-renderer.js";
+import { parseMyConfig } from "./my-config.js";
 
 export class MyIllustration {
   constructor(container) {
     this.container = container;
-    this.canvas = container.querySelector('.illustration-canvas');
-    
+    this.canvas = container.querySelector(".illustration-canvas");
+
     this.config = parseMyConfig(container);
     this.model = new MyModel(this.config);
     this.renderer = new MyRenderer(this.canvas, container, this.config);
     this.animation = new AnimationLoop(() => this.onFrame());
-    
+
     this.model.initialize();
   }
 
@@ -230,11 +321,11 @@ export class MyIllustration {
 Добавьте новую иллюстрацию в реестр:
 
 ```javascript
-import { MyIllustration } from './[name]/[name].js';
+import { MyIllustration } from "./[name]/[name].js";
 
 const illustrationTypes = {
   sphere: SphereIllustration,
-  [name]: MyIllustration  // Добавить здесь
+  [name]: MyIllustration, // Добавить здесь
 };
 ```
 
@@ -251,6 +342,7 @@ const illustrationTypes = {
 ### Генеративные иллюстрации
 
 Модель создается алгоритмом (как `sphere`):
+
 - Генерация точек/элементов по алгоритму
 - Динамическое добавление/удаление элементов
 - Пример: `sphere` — генерация точек на сфере
@@ -258,6 +350,7 @@ const illustrationTypes = {
 ### Статические иллюстрации
 
 Модель основана на заданной графике:
+
 - Загрузка данных из SVG или массивов координат
 - Поддержка повторяющихся элементов
 - Пример: иллюстрация из 5 одинаковых частей, заданных как SVG фрагменты
@@ -267,9 +360,9 @@ const illustrationTypes = {
 ### Получение экземпляра иллюстрации
 
 ```javascript
-import { getIllustrationInstance } from '/assets/illustrations/init.js';
+import { getIllustrationInstance } from "/assets/illustrations/init.js";
 
-const container = document.querySelector('.illustration-container');
+const container = document.querySelector(".illustration-container");
 const illustration = getIllustrationInstance(container);
 
 // Доступ к модели и рендереру
@@ -280,14 +373,14 @@ const renderer = illustration.getRenderer();
 ### Управление анимацией
 
 ```javascript
-illustration.start();  // Запустить анимацию
-illustration.stop();   // Остановить анимацию
+illustration.start(); // Запустить анимацию
+illustration.stop(); // Остановить анимацию
 ```
 
 ### Остановка всех иллюстраций
 
 ```javascript
-import { stopAllIllustrations } from '/assets/illustrations/init.js';
+import { stopAllIllustrations } from "/assets/illustrations/init.js";
 
 stopAllIllustrations();
 ```
@@ -306,11 +399,12 @@ stopAllIllustrations();
 ### Изменение скорости вращения
 
 ```html
-<div class="illustration-container" 
-     data-illustration-type="sphere"
-     data-rotation-speed-x="0.001"
-     data-rotation-speed-y="0.002"
-     data-rotation-speed-z="0.0005">
+<div
+  class="illustration-container"
+  data-illustration-type="sphere"
+  data-rotation-speed-x="0.001"
+  data-rotation-speed-y="0.002"
+  data-rotation-speed-z="0.0005">
   <canvas class="illustration-canvas"></canvas>
 </div>
 ```
@@ -318,10 +412,11 @@ stopAllIllustrations();
 ### Изменение толщины линий и размера точек
 
 ```html
-<div class="illustration-container" 
-     data-illustration-type="sphere"
-     data-line-width="3"
-     data-point-radius="6">
+<div
+  class="illustration-container"
+  data-illustration-type="sphere"
+  data-line-width="3"
+  data-point-radius="6">
   <canvas class="illustration-canvas"></canvas>
 </div>
 ```
@@ -329,11 +424,12 @@ stopAllIllustrations();
 ### Изменение параметров анимации
 
 ```html
-<div class="illustration-container" 
-     data-illustration-type="sphere"
-     data-fade-duration="500"
-     data-min-lines="20"
-     data-max-lines="80">
+<div
+  class="illustration-container"
+  data-illustration-type="sphere"
+  data-fade-duration="500"
+  data-min-lines="20"
+  data-max-lines="80">
   <canvas class="illustration-canvas"></canvas>
 </div>
 ```
@@ -349,6 +445,7 @@ stopAllIllustrations();
 ### Проекция
 
 Используется ортогональная проекция (вид сверху по оси Z):
+
 - X и Y проецируются напрямую
 - Z сохраняется для эффекта глубины (opacity, размер)
 
@@ -366,4 +463,3 @@ stopAllIllustrations();
 2. **Единый интерфейс** — все иллюстрации должны иметь методы `start()` и `stop()`
 3. **Конфигурация через data-атрибуты** — для кастомизации без изменения кода
 4. **Документация** — опишите специфичные параметры вашей иллюстрации
-

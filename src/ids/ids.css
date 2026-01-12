@@ -70,6 +70,10 @@
     margin-bottom: 0.4em;
     margin-left: -0.04em;
 
+    @media (width < 768px) {
+      font-size: 2.5em;
+    }
+
     &.L {
       font-size: 4em;
 
