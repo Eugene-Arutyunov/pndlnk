@@ -1,8 +1,8 @@
 .dkcp-splash-container {
   position: absolute;
   right: -17em;
-  top: -9em;
-  width: 75%;
+  top: -10em;
+  width: 85%;
   aspect-ratio: 1/1;
   pointer-events: none;
 
@@ -12,6 +12,7 @@
     width: 100%;
     top: 0;
     right: 0;
+    overflow: hidden;
   }
 
   & .illustration-container {
